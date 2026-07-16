@@ -4,7 +4,9 @@
    1. RESET Y BASE
    ========================================= */
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
-body { background-color: #0d0d12; color: #ffffff; min-height: 100vh; padding: 2rem; display: flex; justify-content: center; align-items: center; }
+
+/* ¡CORRECCIÓN CRÍTICA!: align-items en flex-start para evitar que se corte el contenido arriba en móviles */
+body { background-color: #0d0d12; color: #ffffff; min-height: 100vh; padding: 2rem 1rem; display: flex; justify-content: center; align-items: flex-start; }
 
 /* =========================================
    2. CONTENEDOR BENTO GRID
@@ -25,41 +27,23 @@ body { background-color: #0d0d12; color: #ffffff; min-height: 100vh; padding: 2r
 #modulo-asistencia { 
     grid-column: span 2; 
     grid-row: span 2; 
-    /* Agregamos un color de fondo base por si la imagen falla (#1a1a24) */
     background-color: #1a1a24;
     background-image: linear-gradient(to right, rgba(13, 13, 18, 0.98) 40%, rgba(13, 13, 18, 0.1)), url('../img/vrifik-ui.jpg');
     background-size: cover;
     background-position: right center;
 }
 
-/* Fila 3 y 4: El Pilar Vertical (Observador Cero se queda a la izquierda) */
 #modulo-nodo0 { grid-column: span 1; grid-row: span 2; }
-
-/* Fila 3 y 4: Los Centros Horizontales (¡Ahora ocupan 3 columnas para llenar el vacío!) */
 #modulo-capseta, .social-design { grid-column: span 3; grid-row: span 1; }
-
-/* Fila 5: La Base Visual */
 .industrial-design, .visual-design { grid-column: span 2; grid-row: span 1; }
 
 /* =========================================
    4. FONDOS (IMÁGENES Y PATRONES)
    ========================================= */
-/* Agregamos colores de respaldo (fallback) a todas las tarjetas de imagen */
-.social-design { 
-    background-color: #1a1a24;
-    background-image: linear-gradient(rgba(26, 26, 36, 0.6), rgba(26, 26, 36, 0.95)), url('../img/apandown.jpg'); 
-    background-size: cover; background-position: center; 
-}
-.industrial-design { 
-    background-color: #1a1a24;
-    background-image: linear-gradient(rgba(26, 26, 36, 0.6), rgba(26, 26, 36, 0.95)), url('../img/tutu.jpg'); 
-    background-size: cover; background-position: center; 
-}
-.visual-design { 
-    background-color: #1a1a24;
-    background-image: linear-gradient(rgba(26, 26, 36, 0.6), rgba(26, 26, 36, 0.95)), url('../img/k13.jpg'); 
-    background-size: cover; background-position: center; 
-}
+.social-design { background-color: #1a1a24; background-image: linear-gradient(rgba(26, 26, 36, 0.6), rgba(26, 26, 36, 0.95)), url('../img/apandown.jpg'); background-size: cover; background-position: center; }
+.industrial-design { background-color: #1a1a24; background-image: linear-gradient(rgba(26, 26, 36, 0.6), rgba(26, 26, 36, 0.95)), url('../img/tutu.jpg'); background-size: cover; background-position: center; }
+.visual-design { background-color: #1a1a24; background-image: linear-gradient(rgba(26, 26, 36, 0.6), rgba(26, 26, 36, 0.95)), url('../img/k13.jpg'); background-size: cover; background-position: center; }
+.tech-app { background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px); background-size: 20px 20px; }
 
 /* =========================================
    5. COMPONENTES UI GLOBALES
@@ -82,37 +66,12 @@ h2 i, h3 i { color: #00ff7f; margin-right: 8px; vertical-align: middle; }
 .hero-avatar { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 3px solid rgba(255, 0, 127, 0.5); box-shadow: 0 0 20px rgba(255, 0, 127, 0.2); flex-shrink: 0; }
 .hero-text { display: flex; flex-direction: column; justify-content: center; }
 .hero-contact { display: flex; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
-
-/* Estilos compartidos para los textos (span) y los enlaces (a) */
-.hero-contact span, .hero-contact .contact-link { 
-    display: flex; align-items: center; gap: 6px; font-size: 0.85rem; color: #e0e0e0; 
-    background: rgba(255, 255, 255, 0.1); padding: 6px 12px; border-radius: 20px; 
-    transition: background 0.3s ease, color 0.3s ease; 
-    text-decoration: none; /* Quita el subrayado azul típico de los enlaces */
-}
-
-/* Efecto hover solo para los enlaces interactivos */
-.hero-contact .contact-link:hover { 
-    background: rgba(255, 255, 255, 0.2); 
-    color: #00ff7f; /* Se ilumina un poco al pasar el mouse */
-    cursor: pointer; 
-}
-/* Integración de Formación en el Hero */
-.hero { justify-content: flex-start; } /* Alinea todo arriba para dar espacio */
-.hero-formacion {
-    margin-top: 20px;
-    padding-top: 15px;
-    border-top: 1px dashed rgba(255, 255, 255, 0.1);
-    display: flex; flex-direction: column;
-    overflow: hidden;
-}
-.formacion-title {
-    font-size: 0.85rem; color: #00ff7f; margin-bottom: 10px;
-    text-transform: uppercase; letter-spacing: 1px;
-}
-.hero-lista {
-    max-height: 135px; /* Altura perfecta para que no desborde tu tarjeta */
-}
+.hero-contact span, .hero-contact .contact-link { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; color: #e0e0e0; background: rgba(255, 255, 255, 0.1); padding: 6px 12px; border-radius: 20px; transition: background 0.3s ease, color 0.3s ease; text-decoration: none; }
+.hero-contact .contact-link:hover { background: rgba(255, 255, 255, 0.2); color: #00ff7f; cursor: pointer; }
+.hero { justify-content: flex-start; } 
+.hero-formacion { margin-top: 20px; padding-top: 15px; border-top: 1px dashed rgba(255, 255, 255, 0.1); display: flex; flex-direction: column; overflow: hidden; }
+.formacion-title { font-size: 0.85rem; color: #00ff7f; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+.hero-lista { max-height: 135px; }
 
 /* =========================================
    7. MÓDULO VRIFIK ASISTENCIA
@@ -120,27 +79,12 @@ h2 i, h3 i { color: #00ff7f; margin-right: 8px; vertical-align: middle; }
 .asistencia-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; height: 100%; }
 .asistencia-controls { display: flex; flex-direction: column; justify-content: flex-start; }
 .vrifik-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
-
-/* Logo Actualizado */
 .app-logo { height: 80px; border-radius: 4px; object-fit: contain; }
-
 .asistencia-controls p strong { color: #00ff7f; font-weight: 600; }
 .column-interface { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
 .column-interface input { width: 100%; padding: 10px; background-color: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; color: white; outline: none; }
 .column-interface input:focus { border-color: #00ff7f; }
-
-/* Fondo tipo cristal (Glassmorphism) para la lista */
-.asistencia-data { 
-    display: flex; flex-direction: column; 
-    /* Hacemos el fondo un poco más claro para que resalte sobre el negro absoluto */
-    background: rgba(255, 255, 255, 0.03); 
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-radius: 12px; 
-    padding: 15px; 
-    border: 1px solid rgba(255, 255, 255, 0.05); 
-}
-
+.asistencia-data { display: flex; flex-direction: column; background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-radius: 12px; padding: 15px; border: 1px solid rgba(255, 255, 255, 0.05); }
 .list-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 0.75rem; color: #a0a0b0; font-weight: 600; }
 .list-actions { display: flex; gap: 10px; }
 .btn-icon { background: transparent; border: none; color: #a0a0b0; cursor: pointer; font-size: 0.8rem; display: flex; align-items: center; gap: 4px; transition: color 0.3s ease; text-transform: uppercase; }
@@ -168,7 +112,7 @@ h2 i, h3 i { color: #00ff7f; margin-right: 8px; vertical-align: middle; }
 /* =========================================
    9. MÓDULO FORMACIÓN
    ========================================= */
-.estudios-lista { margin-top: 15px; display: flex; flex-direction: column; gap: 10px; overflow-y: auto; max-height: 280px; padding-right: 5px; }
+.estudios-lista { margin-top: 15px; display: flex; flex-direction: column; gap: 10px; overflow-y: auto; padding-right: 5px; }
 .estudios-lista::-webkit-scrollbar { width: 4px; }
 .estudios-lista::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); border-radius: 4px; }
 .estudios-lista::-webkit-scrollbar-thumb { background: #00ff7f; border-radius: 4px; }
@@ -180,153 +124,63 @@ h2 i, h3 i { color: #00ff7f; margin-right: 8px; vertical-align: middle; }
 /* =========================================
    10. MÓDULO CAPSETA (SIMULADOR)
    ========================================= */
-#modulo-capseta {
-    /* Usamos tu captura de la hoja de cálculo de fondo con efecto oscurecido */
-    background-image: linear-gradient(to right, rgba(13, 13, 18, 0.98) 45%, rgba(13, 13, 18, 0.3)), url('../img/capseta-db.jpg');
-    background-size: cover;
-    background-position: left center;
-}
-
-.capseta-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    height: 100%;
-}
-
-.capseta-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.capseta-form {
-    margin-top: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.input-group {
-    display: flex;
-    gap: 10px;
-}
-
-.tech-input {
-    width: 100%;
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 6px;
-    color: #a0a0b0;
-    outline: none;
-    font-size: 0.8rem;
-    cursor: pointer;
-}
-
-.tech-input:focus {
-    border-color: #00ff7f;
-    color: #fff;
-}
-
-.capseta-console {
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px dashed rgba(0, 255, 127, 0.3);
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-.console-header {
-    background: rgba(0, 255, 127, 0.1);
-    color: #00ff7f;
-    padding: 5px 10px;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    font-weight: bold;
-    border-bottom: 1px dashed rgba(0, 255, 127, 0.3);
-}
-
-.console-body {
-    padding: 10px;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.75rem;
-    color: #00ff7f;
-    flex-grow: 1;
-    overflow-y: auto;
-    line-height: 1.5;
-}
-
-/* Ajuste Responsive para Capseta */
-@media (max-width: 900px) {
-    .capseta-layout { grid-template-columns: 1fr; }
-    .capseta-console { min-height: 150px; }
-}
-
-/* =========================================
-   13. MÓDULO PROYECTOS SOCIALES (TAGS)
-   ========================================= */
-.project-tags {
-    display: flex;
-    flex-wrap: wrap; /* Permite que los tags salten a la siguiente línea si no caben */
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.tag {
-    background: rgba(0, 255, 127, 0.1);
-    border: 1px solid rgba(0, 255, 127, 0.3);
-    color: #00ff7f;
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-size: 0.8rem;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: all 0.3s ease;
-    cursor: default;
-}
-
-.tag:hover {
-    background: rgba(0, 255, 127, 0.2);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 255, 127, 0.1);
-}
+#modulo-capseta { background-image: linear-gradient(to right, rgba(13, 13, 18, 0.98) 45%, rgba(13, 13, 18, 0.3)), url('../img/capseta-db.jpg'); background-size: cover; background-position: left center; }
+.capseta-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 100%; }
+.capseta-info { display: flex; flex-direction: column; justify-content: center; }
+.capseta-form { margin-top: 15px; display: flex; flex-direction: column; gap: 10px; }
+.input-group { display: flex; gap: 10px; }
+.tech-input { width: 100%; padding: 10px; background-color: rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 6px; color: #a0a0b0; outline: none; font-size: 0.8rem; cursor: pointer; }
+.tech-input:focus { border-color: #00ff7f; color: #fff; }
+.capseta-console { background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); border: 1px dashed rgba(0, 255, 127, 0.3); border-radius: 8px; display: flex; flex-direction: column; overflow: hidden; }
+.console-header { background: rgba(0, 255, 127, 0.1); color: #00ff7f; padding: 5px 10px; font-size: 0.7rem; text-transform: uppercase; font-weight: bold; border-bottom: 1px dashed rgba(0, 255, 127, 0.3); }
+.console-body { padding: 10px; font-family: 'Courier New', Courier, monospace; font-size: 0.75rem; color: #00ff7f; flex-grow: 1; overflow-y: auto; line-height: 1.5; }
 
 /* =========================================
    11. VENTANA MODAL (POP-UP)
    ========================================= */
-.modal-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-    display: flex; justify-content: center; align-items: center;
-    z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.3s ease;
-}
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); display: flex; justify-content: center; align-items: center; z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
 .modal-overlay.active { opacity: 1; visibility: visible; }
 .modal-content { position: relative; max-width: 90vw; max-height: 90vh; }
 .modal-img { width: 100%; height: 100%; object-fit: contain; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
-.btn-cerrar {
-    position: absolute; top: -40px; right: -40px; background: transparent; border: none;
-    color: #fff; font-size: 2rem; cursor: pointer; transition: color 0.3s;
-}
+.btn-cerrar { position: absolute; top: -40px; right: -40px; background: transparent; border: none; color: #fff; font-size: 2rem; cursor: pointer; transition: color 0.3s; }
 .btn-cerrar:hover { color: #ff007f; }
 
 /* =========================================
-   12. RESPONSIVE DESIGN (NUNCA MOVER)
+   12. MÓDULO PROYECTOS SOCIALES (TAGS)
+   ========================================= */
+.project-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+.tag { background: rgba(0, 255, 127, 0.1); border: 1px solid rgba(0, 255, 127, 0.3); color: #00ff7f; padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; display: flex; align-items: center; gap: 6px; transition: all 0.3s ease; cursor: default; }
+.tag:hover { background: rgba(0, 255, 127, 0.2); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0, 255, 127, 0.1); }
+
+/* =========================================
+   13. RESPONSIVE DESIGN (NUEVA VERSIÓN BLINDADA)
    ========================================= */
 @media (max-width: 1024px) { 
     .bento-container { grid-template-columns: repeat(2, 1fr); } 
-    .hero, .social-design { grid-column: span 2; } 
+    .hero, #modulo-asistencia, #modulo-nodo0, #modulo-capseta, .social-design { grid-column: span 2 !important; grid-row: auto !important; }
+    .industrial-design, .visual-design { grid-column: span 1 !important; grid-row: auto !important; }
 }
+
 @media (max-width: 900px) {
-    .asistencia-layout { grid-template-columns: 1fr; }
-    .hero-profile { flex-direction: column; text-align: center; }
-}
-@media (max-width: 600px) { 
-    .bento-container { grid-template-columns: 1fr; } 
-    .hero, .tech-app, .social-design, .industrial-design, .visual-design { grid-column: span 1; } 
-    #modulo-asistencia { grid-column: span 1; grid-row: auto; }
+    /* Forzamos 1 sola columna usando GRID puro (Evita fallos de flexbox) */
+    .bento-container { grid-template-columns: 1fr !important; }
+    
+    /* Obligamos a cada tarjeta a ocupar todo el ancho disponible */
+    .bento-item { grid-column: 1 / -1 !important; grid-row: auto !important; }
+
+    /* Apilamos los layouts internos (App Asistencia y Simulador Capseta) */
+    .asistencia-layout, .capseta-layout { grid-template-columns: 1fr !important; gap: 20px; }
+
+    /* Centramos el contenido de tu perfil */
+    .hero-profile { flex-direction: column; text-align: center; gap: 15px; }
+    .hero h1 { font-size: 2.8rem; margin-top: 10px; }
+    .hero-avatar { width: 120px; height: 120px; }
+
+    /* Apilamos los botones de contacto verticalmente */
+    .hero-contact { flex-direction: column; gap: 10px; align-items: stretch; }
+    .hero-contact span, .hero-contact .contact-link { justify-content: center; }
+
+    /* Ajustes de altura interna para asegurar legibilidad */
+    .capseta-console { min-height: 250px; }
+    .hero-lista { max-height: 250px; }
 }
