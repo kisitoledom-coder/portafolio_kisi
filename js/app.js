@@ -125,21 +125,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnVerK13 = document.getElementById('btn-ver-k13'); 
 
     //LOS ARRAYS DE CADA GALERÍA (RUTA DE IMÁGENES)
+    
+    const galeriaSpecs = [
+        'img/vrifik-ui.png' // O el nombre que tenga la imagen de tu UI
+    ];
+
     const galeriaJuguetes = [
         'img/juguetes_1.png', 
         'img/tutu.png',
-        'img/alfabetizador-braille.jpg',  // <--- NUEVA FOTO
-        'img/tutu-2.png'             // <--- NUEVA FOTO (¡La última NO lleva coma!)
+        'img/alfabetizador-braille.jpg',  
+        'img/tutu-2.png'             
     ]; 
     
     const galeriaK13 = [
-        'img/k13-arte.png',
-        'img/k13-diamante.jpg',           // <--- NUEVA FOTO
-        'img/k13-punk.png'                // <--- NUEVA FOTO (¡La última NO lleva coma!)
+        'img/k13-1.png',
+        'img/k13-diamante.png',           
+        'img/k13-punk.png'                
     ];
-
-    let currentGallery = [];
-    let currentIndex = 0;
 
     // Actualiza la foto y el contador
     const actualizarImagen = () => {
