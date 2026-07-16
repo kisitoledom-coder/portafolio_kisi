@@ -4,52 +4,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kisi Toledo | UX/UI & Front-End</title>
+    <title>Kisi Toledo | Front-End & UX/UI Bóveda</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
     <main class="bento-container">
-        <!-- Presentación Principal -->
+
+        <!-- 1. Presentación Principal -->
         <article class="bento-item hero">
             <h1>Kisi Toledo</h1>
             <h2>Diseñadora Industrial & UX/UI. Trainee Front-End.</h2>
-            <p>Especialista en diseño inclusivo, prototipado avanzado y soluciones digitales end-to-end.</p>
+            <p>Especialista en diseño inclusivo, prototipado avanzado y desarrollo de soluciones digitales lógicas y
+                escalables.</p>
         </article>
 
-        <!-- Módulo SaaS / Apps (Estilo Dark Tech) -->
-        <article class="bento-item tech-app">
-            <div class="status-indicator"><span></span> Live</div>
-            <h3>Familia vrifik</h3>
-            <p>Plataforma de validación profesional y asistencia biométrica.</p>
-            <button class="btn-demo">Ver App</button>
-            <button class="btn-code">GitHub</button>
+        <!-- 2. Módulo Interactivo: vrifik asistencia -->
+        <article class="bento-item tech-app" id="modulo-asistencia">
+            <div class="status-indicator"><span></span> DOM Live</div>
+            <h3>vrifik asistencia</h3>
+            <p>Sistema de captura y renderizado de nóminas en tiempo real.</p>
+            <div class="app-interface">
+                <input type="text" id="asistencia-input" placeholder="Nombre del colaborador..." autocomplete="off">
+                <button id="btn-registrar" class="btn-demo">Fichar</button>
+            </div>
+            <ul id="lista-asistencia" class="data-list"></ul>
         </article>
 
-        <!-- Módulo Diseño Social / Inclusivo -->
-        <article class="bento-item social-design">
-            <h3>Proyectos Sociales</h3>
-            <p>Puerto Montt. Diseño colaborativo y medioambiental.</p>
+        <!-- 3. Módulo Interactivo: vrifik xPRO -->
+        <article class="bento-item tech-app" id="modulo-xpro">
+            <div class="status-indicator"><span></span> Async Live</div>
+            <h3>vrifik xPRO</h3>
+            <p>Simulador de validación asíncrona de credenciales profesionales.</p>
+            <div class="xpro-interface">
+                <div id="xpro-status" class="status-box">Esperando documento...</div>
+                <button id="btn-validar" class="btn-demo">Validar Profesional</button>
+            </div>
         </article>
 
-        <!-- Módulo Fabricación / Producto -->
-        <article class="bento-item industrial-design">
-            <h3>Proyectos de Fabricación</h3>
-            <p>Alfabetizador Braille -Juguete Universal del Hito de Pinza. Desarrollo en madera e impresión 3D.</p>
+        <!-- 4. Módulo Interactivo: vrifik CTO -->
+        <article class="bento-item tech-app" id="modulo-cto">
+            <div class="status-indicator"><span></span> Lógica Live</div>
+            <h3>vrifik CTO</h3>
+            <p>Control operativo. Cálculo de progreso basado en inspecciones técnicas.</p>
+            <div class="cto-interface">
+                <label><input type="checkbox" class="cto-check"> Revisión estructural</label>
+                <label><input type="checkbox" class="cto-check"> Protocolo de seguridad</label>
+                <label><input type="checkbox" class="cto-check"> Aprobación de planos</label>
+                <div class="progress-container">
+                    <div id="cto-progress-bar" class="progress-bar">0%</div>
+                </div>
+            </div>
         </article>
 
-        <!-- Módulo Plataforma Educativa -->
+        <!-- 5. Proyecto de Plataforma: Capseta -->
         <article class="bento-item tech-app">
             <h3>Capseta</h3>
-            <p>Plataforma de entrenamiento técnico modular.</p>
+            <p>Arquitectura y modelo de licenciamiento para plataforma de entrenamiento técnico modular.</p>
+            <button class="btn-code">Ver Estructura</button>
         </article>
 
-        <!-- Módulo Ilustración / Editorial -->
+        <!-- 6. Proyecto Social / Físico: Fundación Apandown -->
+        <article class="bento-item social-design">
+            <h3>Fundación Apandown</h3>
+            <p>Jardín Inclusivo en Puerto Montt. Diseño colaborativo y medioambiental.</p>
+        </article>
+
+        <!-- 7. Proyecto de Fabricación: Camión Tutú -->
+        <article class="bento-item industrial-design">
+            <h3>Camión Tutú</h3>
+            <p>Juguete Universal del Hito de Pinza. Desarrollo en madera e impresión 3D.</p>
+        </article>
+
+        <!-- 8. Proyecto Visual / Pedagógico: Colección K13 -->
         <article class="bento-item visual-design">
             <h3>Colección K13</h3>
-            <p>Ilustración minimalista y fichas pedagógicas.</p>
+            <p>Ilustración minimalista y desarrollo de material pedagógico estandarizado.</p>
         </article>
+
     </main>
 
     <script src="js/app.js"></script>
