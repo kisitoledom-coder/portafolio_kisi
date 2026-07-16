@@ -1,9 +1,11 @@
-/* --- RESET BASE --- */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+
+/* Actualiza tu selector universal * para usar esta fuente */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Luego pondremos tu tipografía ideal */
+    font-family: 'Outfit', sans-serif;
 }
 
 body {
@@ -128,4 +130,43 @@ body {
     .hero, .tech-app, .social-design, .industrial-design {
         grid-column: span 1;
     }
+}
+
+/* --- BOTONES DE APLICACIONES --- */
+.tech-app button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-demo {
+    background-color: #ff007f; /* Tu color magenta/neón */
+    color: white;
+    border: none;
+    box-shadow: 0 4px 15px rgba(255, 0, 127, 0.3);
+}
+
+.btn-demo:hover {
+    background-color: #e60073;
+    box-shadow: 0 6px 20px rgba(255, 0, 127, 0.5);
+    transform: translateY(-2px);
+}
+
+.btn-code {
+    background-color: transparent;
+    color: #a0a0b0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-code:hover {
+    border-color: #ffffff;
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.05);
 }
