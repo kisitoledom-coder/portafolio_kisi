@@ -127,13 +127,14 @@ document.addEventListener("DOMContentLoaded", () => {
     //LOS ARRAYS DE CADA GALERÍA (RUTA DE IMÁGENES)
     
     const galeriaSpecs = [
-        'img/vrifik-ui.png' // O el nombre que tenga la imagen de tu UI
+        'img/vrifik-ui.png' // nombre que tenga la imagen de UI
     ];
 
     const galeriaJuguetes = [
-        'img/juguetes_1.png', 
         'img/tutu.png',
-        'img/alfabetizador-braille.jpg',  
+        'img/alfabetizador-braille.png',
+        'img/cohete.png',  
+        'img/espada.png',
         'img/tutu-2.png'             
     ]; 
     
