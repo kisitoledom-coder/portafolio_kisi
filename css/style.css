@@ -134,3 +134,38 @@ body {
 /* --- RESPONSIVE --- */
 @media (max-width: 1024px) { .bento-container { grid-template-columns: repeat(2, 1fr); } .hero, .social-design { grid-column: span 2; } }
 @media (max-width: 600px) { .bento-container { grid-template-columns: 1fr; } .hero, .tech-app, .social-design, .industrial-design, .visual-design { grid-column: span 1; } }
+
+/* --- ESTILOS DE ÍCONOS --- */
+h2 i, h3 i {
+    color: #00ff7f; /* Acento verde tech para los íconos en títulos */
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.hero h2 i {
+    color: #ff007f; /* Acento magenta para tu cargo */
+}
+
+.hero-contact {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.hero-contact span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: #e0e0e0;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 6px 12px;
+    border-radius: 20px;
+    transition: background 0.3s ease;
+}
+
+.hero-contact span:hover {
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+}
