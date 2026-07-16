@@ -27,26 +27,50 @@
             </div>
         </article>
 
-        <!-- 2. Módulo Interactivo: vrifik asistencia -->
+        <!-- 2. Módulo Interactivo: vrifik asistencia (WIDE) -->
         <article class="bento-item tech-app" id="modulo-asistencia">
-            <div class="status-indicator"><span></span> DOM Live</div>
-            <h3><i class="ph ph-fingerprint"></i> vrifik asistencia</h3>
-            <p>Sistema de captura y renderizado de nóminas en tiempo real.</p>
-            <div class="app-interface">
-                <input type="text" id="asistencia-input" placeholder="Nombre del colaborador..." autocomplete="off">
-                <button id="btn-registrar" class="btn-demo"><i class="ph ph-check-circle"></i> Fichar</button>
-            </div>
-            <ul id="lista-asistencia" class="data-list"></ul>
-        </article>
+            <div class="asistencia-layout">
+
+                <!-- Lado Izquierdo: Controles -->
+                <div class="asistencia-controls">
+                    <div class="status-indicator"><span></span> Herramienta Funcional</div>
+                    <h3><i class="ph ph-fingerprint"></i> vrifik asistencia</h3>
+                    <p>Herramienta libre: Pasa lista rápido, cuenta a los presentes y copia el registro.</p>
+
+                    <div class="app-interface column-interface">
+                        <input type="text" id="asistencia-input" placeholder="Nombre del colaborador..."
+                            autocomplete="off">
+                        <button id="btn-registrar" class="btn-demo"><i class="ph ph-plus-circle"></i> Fichar</button>
+                    </div>
+                </div>
+
+                <!-- Lado Derecho: Visualización de Datos -->
+                <div class="asistencia-data">
+                    <div class="list-header">
+                        <span id="contador-asistencia">0 presentes</span>
+                        <div class="list-actions">
+                            <button id="btn-copiar" class="btn-icon" title="Copiar lista"><i class="ph ph-copy"></i>
+                                Copiar</button>
+                            <button id="btn-limpiar" class="btn-icon" title="Borrar lista"><i
+                                    class="ph ph-trash"></i></button>
+                        </div>
+                    </div>
+                    <ul id="lista-asistencia" class="data-list large-list"></ul>
+                </div>
+
+            </div> <!-- ¡CORRECCIÓN: Faltaba cerrar el asistencia-layout! -->
+        </article> <!-- ¡CORRECCIÓN: Faltaba cerrar el article del módulo! -->
+
 
         <!-- 3. Módulo Interactivo: vrifik xPRO -->
         <article class="bento-item tech-app" id="modulo-xpro">
             <h3><i class="ph ph-seal-check"></i> vrifik xPRO</h3>
-            <h3>vrifik xPRO</h3>
+            <!-- ¡CORRECCIÓN: Eliminé el <h3> duplicado que estaba aquí! -->
             <p>Simulador de validación asíncrona de credenciales profesionales.</p>
             <div class="xpro-interface">
                 <div id="xpro-status" class="status-box">Esperando documento...</div>
-                <button id="btn-validar" class="btn-demo"><i class="ph ph-shield-check"></i> Validar Profesional</button>
+                <button id="btn-validar" class="btn-demo"><i class="ph ph-shield-check"></i> Validar
+                    Profesional</button>
             </div>
         </article>
 

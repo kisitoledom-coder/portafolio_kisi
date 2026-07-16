@@ -65,7 +65,6 @@ body {
 .industrial-design, .visual-design { grid-column: span 1; grid-row: span 1; }
 
 /* --- FONDOS DE PROYECTOS FÍSICOS/VISUALES --- */
-/* Asegúrate de tener estas imágenes en tu carpeta img */
 .social-design {
     background-image: linear-gradient(rgba(26, 26, 36, 0.5), rgba(26, 26, 36, 0.95)), url('../img/apandown.jpg');
     background-size: cover; background-position: center;
@@ -112,56 +111,27 @@ body {
     text-transform: uppercase; 
     border: none; 
     font-size: 0.8rem;
-    /* Agrega estas 3 líneas para alinear el ícono y el texto: */
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 8px; 
 }
 
-/* --- INTERFACES DE MICRO-APPS INTERACTIVAS --- */
-.app-interface, .xpro-interface, .cto-interface { margin-top: 15px; display: flex; flex-direction: column; gap: 10px; }
-
-/* Asistencia */
-.app-interface input {
-    padding: 10px; background-color: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; color: white; outline: none;
-}
-.app-interface input:focus { border-color: #00ff7f; }
-.data-list { list-style: none; max-height: 100px; overflow-y: auto; margin-top: 10px; }
-.data-list li { background: rgba(0, 255, 127, 0.1); color: #00ff7f; padding: 6px 10px; border-radius: 4px; margin-bottom: 5px; font-size: 0.8rem; display: flex; justify-content: space-between; }
-
-/* xPRO */
-.status-box { padding: 12px; background: rgba(255, 255, 255, 0.05); border: 1px dashed rgba(255,255,255,0.3); border-radius: 6px; text-align: center; font-size: 0.85rem; color: #a0a0b0; transition: all 0.3s ease; }
-.status-box.valid { background: rgba(0, 255, 127, 0.1); border-color: #00ff7f; color: #00ff7f; font-weight: bold; }
-.status-box.loading { border-color: #ffcc00; color: #ffcc00; }
-
-/* CTO */
-.cto-interface label { font-size: 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; color: #e0e0e0; }
-.progress-container { width: 100%; background-color: rgba(255, 255, 255, 0.1); border-radius: 10px; margin-top: 10px; overflow: hidden; height: 16px; }
-.progress-bar { height: 100%; background-color: #00ff7f; width: 0%; text-align: center; font-size: 0.7rem; color: #000; font-weight: bold; line-height: 16px; transition: width 0.4s ease; }
-
-/* --- RESPONSIVE --- */
-@media (max-width: 1024px) { .bento-container { grid-template-columns: repeat(2, 1fr); } .hero, .social-design { grid-column: span 2; } }
-@media (max-width: 600px) { .bento-container { grid-template-columns: 1fr; } .hero, .tech-app, .social-design, .industrial-design, .visual-design { grid-column: span 1; } }
-
 /* --- ESTILOS DE ÍCONOS --- */
 h2 i, h3 i {
-    color: #00ff7f; /* Acento verde tech para los íconos en títulos */
+    color: #00ff7f; 
     margin-right: 8px;
     vertical-align: middle;
 }
-
 .hero h2 i {
-    color: #ff007f; /* Acento magenta para tu cargo */
+    color: #ff007f; 
 }
-
 .hero-contact {
     display: flex;
     gap: 15px;
     margin-top: 20px;
     flex-wrap: wrap;
 }
-
 .hero-contact span {
     display: flex;
     align-items: center;
@@ -173,8 +143,116 @@ h2 i, h3 i {
     border-radius: 20px;
     transition: background 0.3s ease;
 }
-
 .hero-contact span:hover {
     background: rgba(255, 255, 255, 0.2);
     cursor: pointer;
+}
+
+/* --- INTERFACES DE MICRO-APPS INTERACTIVAS --- */
+.app-interface, .xpro-interface, .cto-interface { margin-top: 15px; display: flex; flex-direction: column; gap: 10px; }
+
+/* Asistencia - Input y Lista */
+.app-interface input {
+    padding: 10px; background-color: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; color: white; outline: none;
+}
+.app-interface input:focus { border-color: #00ff7f; }
+.data-list { list-style: none; max-height: 100px; overflow-y: auto; margin-top: 10px; }
+.data-list li { background: rgba(0, 255, 127, 0.1); color: #00ff7f; padding: 6px 10px; border-radius: 4px; margin-bottom: 5px; font-size: 0.8rem; display: flex; justify-content: space-between; }
+
+/* Asistencia - Barra de Herramientas */
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 0.75rem;
+    color: #a0a0b0;
+    font-weight: 600;
+}
+.list-actions {
+    display: flex;
+    gap: 10px;
+}
+.btn-icon {
+    background: transparent;
+    border: none;
+    color: #a0a0b0;
+    cursor: pointer;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.3s ease;
+    text-transform: uppercase;
+}
+.btn-icon:hover {
+    color: #00ff7f; 
+}
+
+/* --- LAYOUT EXPANDIDO PARA VRIFIK ASISTENCIA --- */
+#modulo-asistencia {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+.asistencia-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    height: 100%;
+}
+.asistencia-controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.column-interface {
+    flex-direction: column;
+    margin-top: 30px;
+}
+.column-interface input {
+    width: 100%;
+}
+.asistencia-data {
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    padding: 15px;
+    border: 1px inset rgba(255, 255, 255, 0.05);
+}
+.large-list {
+    max-height: 260px; 
+    flex-grow: 1;
+}
+
+/* xPRO */
+.status-box { padding: 12px; background: rgba(255, 255, 255, 0.05); border: 1px dashed rgba(255,255,255,0.3); border-radius: 6px; text-align: center; font-size: 0.85rem; color: #a0a0b0; transition: all 0.3s ease; }
+.status-box.valid { background: rgba(0, 255, 127, 0.1); border-color: #00ff7f; color: #00ff7f; font-weight: bold; }
+.status-box.loading { border-color: #ffcc00; color: #ffcc00; }
+
+/* CTO */
+.cto-interface label { font-size: 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; color: #e0e0e0; }
+.progress-container { width: 100%; background-color: rgba(255, 255, 255, 0.1); border-radius: 10px; margin-top: 10px; overflow: hidden; height: 16px; }
+.progress-bar { height: 100%; background-color: #00ff7f; width: 0%; text-align: center; font-size: 0.7rem; color: #000; font-weight: bold; line-height: 16px; transition: width 0.4s ease; }
+
+/* ======================================================
+   RESPONSIVE DESIGN (MEDIA QUERIES SIEMPRE AL FINAL)
+   ====================================================== */
+@media (max-width: 1024px) { 
+    .bento-container { grid-template-columns: repeat(2, 1fr); } 
+    .hero, .social-design { grid-column: span 2; } 
+}
+
+@media (max-width: 900px) {
+    .asistencia-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) { 
+    .bento-container { grid-template-columns: 1fr; } 
+    .hero, .tech-app, .social-design, .industrial-design, .visual-design { grid-column: span 1; } 
+    /* Fuerza al módulo asistencia a ocupar 1 columna en móviles */
+    #modulo-asistencia { grid-column: span 1; grid-row: auto; }
 }
