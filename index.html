@@ -10,15 +10,21 @@
 </head>
 
 <body>
-
     <main class="bento-container">
 
-        <!-- 1. Presentación Principal -->
+        <!-- 1. Presentación Principal (2x2) -->
         <article class="bento-item hero">
-            <h1>Kisi Toledo</h1>
-            <h2><i class="ph ph-code"></i> Diseñadora Industrial & UX/UI. Trainee Front-End.</h2>
-            <p>Especialista en diseño inclusivo, prototipado avanzado y desarrollo de soluciones digitales lógicas y
-                escalables.</p>
+            <div class="hero-profile">
+                <!--  foto -->
+                <img src="img/perfil.png" alt="Kisi Toledo" class="hero-avatar">
+
+                <div class="hero-text">
+                    <h1>Kisi Toledo</h1>
+                    <h2><i class="ph ph-code"></i> Diseñadora Industrial & UX/UI. Trainee Front-End.</h2>
+                    <p>Especialista en diseño inclusivo, prototipado avanzado y desarrollo de soluciones digitales
+                        lógicas y escalables.</p>
+                </div>
+            </div>
 
             <div class="hero-contact">
                 <span><i class="ph ph-map-pin"></i> Curanilahue, Bío Bío</span>
@@ -27,24 +33,19 @@
             </div>
         </article>
 
-        <!-- 2. Módulo Interactivo: vrifik asistencia (WIDE) -->
+        <!-- 2. vrifik asistencia (2x2) -->
         <article class="bento-item tech-app" id="modulo-asistencia">
             <div class="asistencia-layout">
-
-                <!-- Lado Izquierdo: Controles -->
                 <div class="asistencia-controls">
                     <div class="status-indicator"><span></span> Herramienta Funcional</div>
                     <h3><i class="ph ph-fingerprint"></i> vrifik asistencia</h3>
                     <p>Herramienta libre: Pasa lista rápido, cuenta a los presentes y copia el registro.</p>
-
                     <div class="app-interface column-interface">
                         <input type="text" id="asistencia-input" placeholder="Nombre del colaborador..."
                             autocomplete="off">
                         <button id="btn-registrar" class="btn-demo"><i class="ph ph-plus-circle"></i> Fichar</button>
                     </div>
                 </div>
-
-                <!-- Lado Derecho: Visualización de Datos -->
                 <div class="asistencia-data">
                     <div class="list-header">
                         <span id="contador-asistencia">0 presentes</span>
@@ -57,58 +58,83 @@
                     </div>
                     <ul id="lista-asistencia" class="data-list large-list"></ul>
                 </div>
-
-            </div> <!-- ¡CORRECCIÓN: Faltaba cerrar el asistencia-layout! -->
-        </article> <!-- ¡CORRECCIÓN: Faltaba cerrar el article del módulo! -->
-
-
-        <!-- 3. Módulo Interactivo: vrifik xPRO -->
-        <article class="bento-item tech-app" id="modulo-xpro">
-            <h3><i class="ph ph-seal-check"></i> vrifik xPRO</h3>
-            <!-- ¡CORRECCIÓN: Eliminé el <h3> duplicado que estaba aquí! -->
-            <p>Simulador de validación asíncrona de credenciales profesionales.</p>
-            <div class="xpro-interface">
-                <div id="xpro-status" class="status-box">Esperando documento...</div>
-                <button id="btn-validar" class="btn-demo"><i class="ph ph-shield-check"></i> Validar
-                    Profesional</button>
             </div>
         </article>
 
-        <!-- 4. Módulo Interactivo: vrifik CTO -->
-        <article class="bento-item tech-app" id="modulo-cto">
-            <div class="status-indicator"><span></span> Lógica Live</div>
-            <h3><i class="ph ph-list-checks"></i> vrifik CTO</h3>
-            <p>Control operativo. Cálculo de progreso basado en inspecciones técnicas.</p>
-            <div class="cto-interface">
-                <label><input type="checkbox" class="cto-check"> Revisión estructural</label>
-                <label><input type="checkbox" class="cto-check"> Protocolo de seguridad</label>
-                <label><input type="checkbox" class="cto-check"> Aprobación de planos</label>
-                <div class="progress-container">
-                    <div id="cto-progress-bar" class="progress-bar">0%</div>
+        <!-- 3. Observador Cero (Vertical Izquierdo 1x2) -->
+        <article class="bento-item tech-app nodo-terminal" id="modulo-nodo0">
+            <div class="status-indicator alert"><span></span> RASTREANDO VECTOR</div>
+            <h3><i class="ph ph-radar"></i> Observador Cero</h3>
+            <p>Experiencia narrativa. Encuentra anomalías físicas en la infraestructura urbana.</p>
+            <div class="nodo-interface">
+                <div class="radar-container" id="radar-pantalla">
+                    <div class="radar-scanner"></div>
+                    <div class="anomalia-dot" id="btn-anomalia" title="Aislar Anomalía"></div>
+                </div>
+                <div class="terminal-log" id="nodo-log">
+                    > TRM-3517 EN LÍNEA.<br>
+                    > Esperando interacción física...
                 </div>
             </div>
         </article>
 
-        <!-- 5. Proyecto de Plataforma: Capseta -->
-        <article class="bento-item tech-app">
+        <!-- 4. Capseta (Horizontal Centro Superior 2x1) -->
+        <article class="bento-item tech-app" id="modulo-capseta">
             <h3><i class="ph ph-graduation-cap"></i> Capseta</h3>
             <p>Arquitectura y modelo de licenciamiento para plataforma de entrenamiento técnico modular.</p>
-            <button class="btn-code"><i class="ph ph-code"></i> Ver Estructura</button>
+            <button class="btn-code"><i class="ph ph-tree-structure"></i> Ver Estructura</button>
         </article>
 
-        <!-- 6. Proyecto Social / Físico: Fundación Apandown -->
+        <!-- 5. Proyectos Sociales (Horizontal Centro Inferior 2x1) -->
         <article class="bento-item social-design">
-            <h3><i class="ph ph-plant"></i> Proyectos Sociales</h3>
+            <h3><i class="ph ph-plant"></i> Fundación Apandown</h3>
             <p>Jardín Inclusivo en Puerto Montt. Diseño colaborativo y medioambiental.</p>
         </article>
+        <!-- 6. Formación Continua (Vertical Derecho 1x2) -->
+        <article class="bento-item tech-app" id="modulo-estudios">
+            <div class="status-indicator"><span></span> UPGRADING SKILLS</div>
+            <h3><i class="ph ph-certificate"></i> Formación</h3>
+            <p>Evolución técnica y académica continua.</p>
 
-        <!-- 7. Proyecto de Fabricación Universales -->
+            <div class="estudios-lista">
+                <div class="estudio-item">
+                    <h4>Desarrollo Front-End Trainee</h4>
+                    <p>Bootcamp 441 hrs [Actual]</p>
+                </div>
+                <div class="estudio-item">
+                    <h4>Diseñadora UX/UI</h4>
+                    <p>UNAB / SOFOFA [2025]</p>
+                </div>
+                <div class="estudio-item">
+                    <h4>Diplomado Diseño y Prog. Web</h4>
+                    <p>2024 - 2025</p>
+                </div>
+                <div class="estudio-item">
+                    <h4>Diplomado Diseño Web y UX/UI</h4>
+                    <p>2024 - 2025</p>
+                </div>
+                <div class="estudio-item">
+                    <h4>Diplomado Gestión Ágil</h4>
+                    <p>2024 - 2025</p>
+                </div>
+                <div class="estudio-item">
+                    <h4>Diplomado Marketing Digital</h4>
+                    <p>2024 - 2025</p>
+                </div>
+                <div class="estudio-item">
+                    <h4>Diseño Industrial y Licenciatura</h4>
+                    <p>Universidad del Bío Bío [2016]</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- 7. Juguetes Universales (Horizontal Abajo 2x1) -->
         <article class="bento-item industrial-design">
             <h3><i class="ph ph-cube"></i> Juguetes Universales</h3>
             <p>Juguete Universal del Hito de Pinza. Desarrollo en madera e impresión 3D.</p>
         </article>
 
-        <!-- 8. Proyecto Visual / Pedagógico: Colección K13 -->
+        <!-- 8. Colección K13 (Horizontal Abajo 2x1) -->
         <article class="bento-item visual-design">
             <h3><i class="ph ph-pencil-line"></i> Colección K13</h3>
             <p>Ilustración minimalista y desarrollo de material pedagógico estandarizado.</p>

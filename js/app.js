@@ -82,31 +82,59 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ========================================================
-       2. LÓGICA DE VRIFIK xPRO (Simulación de Asincronía)
+       2. LÓGICA DE NODO 0 (Minijuego de Radar Interactivo)
        ======================================================== */
-  const btnValidar = document.getElementById("btn-validar");
-  const statusBox = document.getElementById("xpro-status");
+    const btnAnomalia = document.getElementById('btn-anomalia');
+    const nodoLog = document.getElementById('nodo-log');
 
-  btnValidar.addEventListener("click", () => {
-    // Estado 1: Cargando
-    statusBox.className = "status-box loading";
-    statusBox.textContent = "Analizando credenciales...";
-    btnValidar.disabled = true;
+    if(btnAnomalia && nodoLog) {
+        btnAnomalia.addEventListener('click', () => {
+            // Evitar múltiples clics mientras se procesa
+            btnAnomalia.style.pointerEvents = 'none';
+            btnAnomalia.style.backgroundColor = '#00ff00'; // Se vuelve verde al capturarla
+            btnAnomalia.style.boxShadow = '0 0 12px #00ff00';
 
-    // Simulamos una petición a servidor (API request) de 2 segundos
-    setTimeout(() => {
-      // Estado 2: Validado
-      statusBox.className = "status-box valid";
-      statusBox.innerHTML = "✔ Profesional Aprobado";
+            // Iniciar logeo
+            nodoLog.innerHTML = '> AISLANDO ANOMALÍA...<br>';
 
-      // Reiniciar para volver a jugar después de 3 segundos
-      setTimeout(() => {
-        statusBox.className = "status-box";
-        statusBox.textContent = "Esperando documento...";
-        btnValidar.disabled = false;
-      }, 3000);
-    }, 1500);
-  });
+            // Textos extraídos directamente de tu narrativa de juego
+            const mensajes = [
+                "> RASTREANDO VECTOR: [ LUCEROS ]",
+                "> DENSIDAD: 9.431 μ | DISTANCIA: 305m",
+                "> OBJETIVO FÍSICO:",
+                "> Un fragmento reflectante que captura luz donde debería haber sombra absoluta.",
+                "> [ ENLACE FÍSICO ESTABLECIDO ]"
+            ];
+
+            let delay = 700; // Milisegundos entre cada línea de texto
+
+            // Efecto de terminal simulado
+            mensajes.forEach((msg, index) => {
+                setTimeout(() => {
+                    nodoLog.innerHTML += msg + '<br>';
+                    // Auto-scroll hacia abajo
+                    nodoLog.scrollTop = nodoLog.scrollHeight;
+                }, delay * (index + 1));
+            });
+
+            // Reiniciar el radar después de leer el mensaje para volver a jugar
+            setTimeout(() => {
+                nodoLog.innerHTML = '> TRM-3517 EN LÍNEA.<br>> Buscando nuevos vectores...';
+                
+                // Reactivar el botón y devolverle el color naranja
+                btnAnomalia.style.pointerEvents = 'auto';
+                btnAnomalia.style.backgroundColor = '#ff8800';
+                btnAnomalia.style.boxShadow = '0 0 8px #ff8800';
+                
+                // Mover la anomalía a una posición aleatoria en el radar (entre 10% y 85%)
+                const randomTop = Math.floor(Math.random() * 75) + 10;
+                const randomLeft = Math.floor(Math.random() * 75) + 10;
+                btnAnomalia.style.top = `${randomTop}%`;
+                btnAnomalia.style.left = `${randomLeft}%`;
+
+            }, delay * mensajes.length + 3500); // Esperar 3.5 segundos tras el último mensaje
+        });
+    }
 
   /* ========================================================
        3. LÓGICA DE VRIFIK CTO (Cálculo de Porcentajes)

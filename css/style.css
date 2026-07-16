@@ -51,18 +51,56 @@ body {
 .bento-item p { font-size: 0.9rem; color: #a0a0b0; }
 
 /* --- DIMENSIONES EN LA GRILLA --- */
-.hero {
+
+/* Fila 1 y 2: Bloques Gigantes Superiores (2 columnas x 2 filas) */
+.hero, #modulo-asistencia {
     grid-column: span 2;
     grid-row: span 2;
+}
+
+/* --- LAYOUT DEL PERFIL (FOTO + TEXTO) --- */
+.hero-profile {
+    display: flex;
+    align-items: center;
+    gap: 25px; /* Separación entre tu foto y el texto */
+    margin-bottom: 20px;
+}
+
+.hero-avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%; /* La hace perfectamente circular */
+    object-fit: cover; /* Evita que tu foto se deforme */
+    border: 3px solid rgba(255, 0, 127, 0.5); /* Borde magenta */
+    box-shadow: 0 0 20px rgba(255, 0, 127, 0.2); /* Brillo tech suave */
+    flex-shrink: 0; /* Evita que la foto se aplaste si hay mucho texto */
+}
+
+/* Ajuste del contenedor de texto para que no se pegue */
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.hero {
     background: linear-gradient(135deg, #2c2c3e 0%, #1a1a24 100%);
     justify-content: center;
 }
 .hero h1 { font-size: 3.5rem; color: #ff007f; margin-bottom: 0.5rem; line-height: 1; }
 .hero h2 { font-size: 1.2rem; color: #e0e0e0; font-weight: 400; margin-bottom: 1rem; }
 
-.tech-app { grid-column: span 1; grid-row: span 2; }
-.social-design { grid-column: span 2; grid-row: span 1; }
-.industrial-design, .visual-design { grid-column: span 1; grid-row: span 1; }
+/* Fila 3 y 4: Los Pilares Verticales (1 columna x 2 filas) */
+#modulo-nodo0, #modulo-estudios { 
+    grid-column: span 1; 
+    grid-row: span 2; 
+}
+
+/* Fila 5: La Base Visual (2 columnas x 1 fila) */
+/* Al darles 2 columnas, tendrán un formato panorámico ideal para mostrar las fotos de fondo */
+.industrial-design, .visual-design { 
+    grid-column: span 2; 
+    grid-row: span 1; 
+}
 
 /* --- FONDOS DE PROYECTOS FÍSICOS/VISUALES --- */
 .social-design {
@@ -225,16 +263,157 @@ h2 i, h3 i {
     max-height: 260px; 
     flex-grow: 1;
 }
+/* --- NODO 0 / OBSERVADOR CERO --- */
+.nodo-terminal {
+    background-color: #050a05; /* Un negro más verdoso */
+    border: 1px solid rgba(0, 255, 0, 0.1);
+}
 
-/* xPRO */
-.status-box { padding: 12px; background: rgba(255, 255, 255, 0.05); border: 1px dashed rgba(255,255,255,0.3); border-radius: 6px; text-align: center; font-size: 0.85rem; color: #a0a0b0; transition: all 0.3s ease; }
-.status-box.valid { background: rgba(0, 255, 127, 0.1); border-color: #00ff7f; color: #00ff7f; font-weight: bold; }
-.status-box.loading { border-color: #ffcc00; color: #ffcc00; }
+.nodo-terminal h3 {
+    color: #00ff00;
+    font-family: monospace;
+}
 
-/* CTO */
-.cto-interface label { font-size: 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; color: #e0e0e0; }
-.progress-container { width: 100%; background-color: rgba(255, 255, 255, 0.1); border-radius: 10px; margin-top: 10px; overflow: hidden; height: 16px; }
-.progress-bar { height: 100%; background-color: #00ff7f; width: 0%; text-align: center; font-size: 0.7rem; color: #000; font-weight: bold; line-height: 16px; transition: width 0.4s ease; }
+.nodo-terminal h3 i { color: #00ff00; }
+
+/* Indicador de Alerta Naranja */
+.status-indicator.alert {
+    background: rgba(255, 136, 0, 0.1);
+    color: #ff8800;
+}
+.status-indicator.alert span {
+    background-color: #ff8800;
+    animation: pulse-alert 1.5s infinite;
+}
+@keyframes pulse-alert {
+    0% { box-shadow: 0 0 0 0 rgba(255, 136, 0, 0.4); }
+    70% { box-shadow: 0 0 0 6px rgba(255, 136, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 136, 0, 0); }
+}
+
+.nodo-interface {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Grilla del Radar */
+.radar-container {
+    height: 120px;
+    background-image: 
+        linear-gradient(rgba(0, 255, 0, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 0, 0.15) 1px, transparent 1px);
+    background-size: 15px 15px;
+    border: 1px solid rgba(0, 255, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    cursor: crosshair;
+}
+
+/* Línea de escaneo animada */
+.radar-scanner {
+    width: 100%;
+    height: 2px;
+    background: #00ff00;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: 0 0 10px #00ff00;
+    animation: scan 3s linear infinite;
+}
+@keyframes scan {
+    0% { top: 0; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+/* El punto que el usuario debe cazar */
+.anomalia-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #ff8800;
+    border-radius: 50%;
+    position: absolute;
+    top: 30%;
+    left: 70%;
+    box-shadow: 0 0 8px #ff8800;
+    cursor: pointer;
+    animation: blink-dot 1s infinite;
+    transition: background-color 0.3s;
+}
+.anomalia-dot:hover {
+    transform: scale(1.5);
+}
+@keyframes blink-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+}
+
+/* Log de Terminal */
+.terminal-log {
+    background: #000;
+    border: 1px dashed rgba(0, 255, 0, 0.3);
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.75rem;
+    color: #00ff00;
+    height: 90px;
+    overflow-y: auto;
+    border-radius: 4px;
+    line-height: 1.4;
+}
+/* --- MÓDULO DE FORMACIÓN (LOG DE ESTUDIOS) --- */
+.estudios-lista {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    max-height: 280px; /* Asegura que no rompa el alto de la tarjeta */
+    padding-right: 5px;
+}
+
+/* Personalizamos la barra de scroll para que se vea Tech */
+.estudios-lista::-webkit-scrollbar {
+    width: 4px;
+}
+.estudios-lista::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+.estudios-lista::-webkit-scrollbar-thumb {
+    background: #00ff7f;
+    border-radius: 4px;
+}
+
+.estudio-item {
+    background: rgba(0, 0, 0, 0.3);
+    border-left: 3px solid #00ff7f;
+    padding: 10px 12px;
+    border-radius: 0 6px 6px 0;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.estudio-item:hover {
+    transform: translateX(5px);
+    background: rgba(0, 255, 127, 0.1);
+}
+
+.estudio-item h4 {
+    font-size: 0.85rem;
+    color: #ffffff;
+    margin-bottom: 3px;
+}
+
+.estudio-item p {
+    font-size: 0.75rem !important;
+    color: #a0a0b0;
+    font-family: monospace;
+}
+
 
 /* ======================================================
    RESPONSIVE DESIGN (MEDIA QUERIES SIEMPRE AL FINAL)
@@ -245,9 +424,24 @@ h2 i, h3 i {
 }
 
 @media (max-width: 900px) {
+    
+    .asistencia-layout {
+    
+            grid-template-columns: 1fr;
+
+        }
+
+
+    @media (max-width: 900px) {
     .asistencia-layout {
         grid-template-columns: 1fr;
     }
+    /* Nuevo: Apilar foto y texto en móviles */
+    .hero-profile {
+        flex-direction: column;
+        text-align: center;
+    }
+}
 }
 
 @media (max-width: 600px) { 
