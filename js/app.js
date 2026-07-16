@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
             nodoLog.innerHTML = '> AISLANDO ANOMALÍA...<br>';
   
             const mensajes = [
-                "> RASTREANDO VECTOR: [ LUCEROS ]",
+                "> RASTREANDO TU UBICACIÓN: [ ENCONTRANDO LUCEROS ]",
                 "> DENSIDAD: 9.431 μ | DISTANCIA: 305m",
                 "> OBJETIVO FÍSICO:",
                 "> Un fragmento reflectante que captura luz donde debería haber sombra absoluta.",
@@ -124,20 +124,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnVerJuguetes = document.getElementById('btn-ver-juguetes'); 
     const btnVerK13 = document.getElementById('btn-ver-k13'); 
 
-    // ARRAYS DE IMÁGENES: Aquí puedes agregar cuantas fotos quieras separadas por comas
-    const galeriaSpecs = [
-        'img/vrifik-ui.png'
-    ]; 
-    
+    //LOS ARRAYS DE CADA GALERÍA (RUTA DE IMÁGENES)
     const galeriaJuguetes = [
         'img/juguetes_1.png', 
-        'img/tutu.png'
-        // Puedes agregar más aquí: 'img/braille.png'
+        'img/tutu.png',
+        'img/alfabetizador-braille.jpg',  // <--- NUEVA FOTO
+        'img/tutu-2.png'             // <--- NUEVA FOTO (¡La última NO lleva coma!)
     ]; 
     
     const galeriaK13 = [
-        'img/k13-arte.png'
-        // Puedes agregar más ilustraciones aquí
+        'img/k13-arte.png',
+        'img/k13-diamante.jpg',           // <--- NUEVA FOTO
+        'img/k13-punk.png'                // <--- NUEVA FOTO (¡La última NO lleva coma!)
     ];
 
     let currentGallery = [];
