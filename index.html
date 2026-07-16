@@ -201,17 +201,25 @@
             <button id="btn-ver-k13" class="btn-code" style="margin-top: auto; width: max-content; padding: 8px 16px;"><i class="ph ph-palette"></i> Ver Galería K13</button>
         </article>
 
-<!-- Ventana Modal Dinámica para Galerías -->
+        <!-- Ventana Modal Dinámica para Galerías (Carrusel) -->
         <div id="ux-modal" class="modal-overlay">
             <div class="modal-content">
                 <button id="btn-cerrar-modal" class="btn-cerrar"><i class="ph ph-x"></i></button>
-                <!-- La imagen ahora está vacía por defecto, JS la rellenará -->
+                
+                <!-- Controles del Carrusel Izquierda -->
+                <button id="btn-prev" class="carousel-btn prev-btn"><i class="ph ph-caret-left"></i></button>
+                
+                <!-- Imagen -->
                 <img src="" alt="Galería de Proyectos Kisi Toledo" id="modal-img-dinamica" class="modal-img">
+                
+                <!-- Controles del Carrusel Derecha -->
+                <button id="btn-next" class="carousel-btn next-btn"><i class="ph ph-caret-right"></i></button>
+                
+                <!-- Indicador de página (Ej: 1 / 3) -->
+                <div id="carousel-indicator" class="carousel-indicator">1 / 1</div>
             </div>
         </div>
-
-    </main>
-
+        
     <script src="js/app.js"></script>
 </body>
 </html>

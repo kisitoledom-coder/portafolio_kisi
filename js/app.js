@@ -108,43 +108,99 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* ========================================================
-       LÓGICA DE VENTANA MODAL DINÁMICA (Galería Universal)
+       LÓGICA DE VENTANA MODAL DINÁMICA Y CARRUSEL
        ======================================================== */
     const modal = document.getElementById('ux-modal');
     const btnCerrar = document.getElementById('btn-cerrar-modal');
     const modalImg = document.getElementById('modal-img-dinamica');
+    
+    // Controles del carrusel
+    const btnPrev = document.getElementById('btn-prev');
+    const btnNext = document.getElementById('btn-next');
+    const indicator = document.getElementById('carousel-indicator');
 
     // Botones de cada proyecto
-    const btnVerSpecs = document.getElementById('btn-ver-specs'); // vrifik asistencia
-    const btnVerJuguetes = document.getElementById('btn-ver-juguetes'); // Camión Tutú / Braille
-    const btnVerK13 = document.getElementById('btn-ver-k13'); // Arte Punk
+    const btnVerSpecs = document.getElementById('btn-ver-specs'); 
+    const btnVerJuguetes = document.getElementById('btn-ver-juguetes'); 
+    const btnVerK13 = document.getElementById('btn-ver-k13'); 
 
-    // Función constructora que abre el modal y cambia la foto
-    const abrirModal = (rutaImagen) => {
+    // ARRAYS DE IMÁGENES: Aquí puedes agregar cuantas fotos quieras separadas por comas
+    const galeriaSpecs = [
+        'img/vrifik-ui.png'
+    ]; 
+    
+    const galeriaJuguetes = [
+        'img/juguetes_1.png', 
+        'img/tutu.png'
+        // Puedes agregar más aquí: 'img/braille.png'
+    ]; 
+    
+    const galeriaK13 = [
+        'img/k13-arte.png'
+        // Puedes agregar más ilustraciones aquí
+    ];
+
+    let currentGallery = [];
+    let currentIndex = 0;
+
+    // Actualiza la foto y el contador
+    const actualizarImagen = () => {
+        modalImg.src = currentGallery[currentIndex];
+        indicator.textContent = `${currentIndex + 1} / ${currentGallery.length}`;
+        
+        // Si hay solo 1 foto, escondemos las flechas
+        if (currentGallery.length <= 1) {
+            btnPrev.style.display = 'none';
+            btnNext.style.display = 'none';
+            indicator.style.display = 'none';
+        } else {
+            btnPrev.style.display = 'flex';
+            btnNext.style.display = 'flex';
+            indicator.style.display = 'block';
+        }
+    };
+
+    // Función que abre el modal y carga la galería seleccionada
+    const abrirModal = (galeria) => {
         if(modalImg && modal) {
-            modalImg.src = rutaImagen;
+            currentGallery = galeria;
+            currentIndex = 0; // Inicia siempre en la primera foto
+            actualizarImagen();
             modal.classList.add('active');
         }
     };
 
-    // Asignamos las rutas de tus imágenes a cada botón
-    // IMPORTANTE: Asegúrate de guardar tus fotos con estos nombres en la carpeta 'img'
-    if(btnVerSpecs) btnVerSpecs.addEventListener('click', () => abrirModal('img/1b.png'));
-    if(btnVerJuguetes) btnVerJuguetes.addEventListener('click', () => abrirModal('img/juguetes.jpg'));
-    if(btnVerK13) btnVerK13.addEventListener('click', () => abrirModal('img/k13-arte.jpg'));
+    // Eventos de flechas (Avanzar / Retroceder)
+    if(btnNext) {
+        btnNext.addEventListener('click', (e) => {
+            e.stopPropagation(); // Evita que el clic cierre el modal
+            currentIndex = (currentIndex + 1) % currentGallery.length;
+            actualizarImagen();
+        });
+    }
+    if(btnPrev) {
+        btnPrev.addEventListener('click', (e) => {
+            e.stopPropagation(); // Evita que el clic cierre el modal
+            currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+            actualizarImagen();
+        });
+    }
+
+    // Asignamos los botones a sus respectivas galerías
+    if(btnVerSpecs) btnVerSpecs.addEventListener('click', () => abrirModal(galeriaSpecs));
+    if(btnVerJuguetes) btnVerJuguetes.addEventListener('click', () => abrirModal(galeriaJuguetes));
+    if(btnVerK13) btnVerK13.addEventListener('click', () => abrirModal(galeriaK13));
 
     // Lógica para cerrar el modal
     if(btnCerrar && modal) {
         btnCerrar.addEventListener('click', () => {
             modal.classList.remove('active');
-            modalImg.src = ''; // Limpiamos la imagen al cerrar
         });
 
         // Cerrar al hacer clic en el fondo oscuro
         modal.addEventListener('click', (e) => {
             if(e.target === modal) {
                 modal.classList.remove('active');
-                modalImg.src = '';
             }
         });
     }
