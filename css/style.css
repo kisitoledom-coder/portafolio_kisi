@@ -1,452 +1,127 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
 
-/* --- RESET --- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Outfit', sans-serif;
-}
+/* =========================================
+   1. RESET Y BASE
+   ========================================= */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+body { background-color: #0d0d12; color: #ffffff; min-height: 100vh; padding: 2rem; display: flex; justify-content: center; align-items: center; }
 
-body {
-    background-color: #0d0d12;
-    color: #ffffff;
-    min-height: 100vh;
-    padding: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* --- CONTENEDOR BENTO GRID --- */
-.bento-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: minmax(250px, auto); 
-    gap: 1.5rem;
-    width: 100%;
-    max-width: 1300px;
-}
-
-/* --- TARJETAS BASE --- */
-.bento-item {
-    background: #1a1a24;
-    border-radius: 24px;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    overflow: hidden;
-    position: relative;
-}
-
-.bento-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
+/* =========================================
+   2. CONTENEDOR BENTO GRID
+   ========================================= */
+.bento-container { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: minmax(250px, auto); gap: 1.5rem; width: 100%; max-width: 1300px; }
+.bento-item { background: #1a1a24; border-radius: 24px; padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid rgba(255, 255, 255, 0.05); overflow: hidden; position: relative; }
+.bento-item:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); }
 .bento-item h3 { margin-bottom: 0.5rem; font-size: 1.3rem; }
 .bento-item p { font-size: 0.9rem; color: #a0a0b0; }
 
-/* --- DIMENSIONES EN LA GRILLA --- */
-
-/* Fila 1 y 2: Bloques Gigantes Superiores (2 columnas x 2 filas) */
-.hero, #modulo-asistencia {
-    grid-column: span 2;
-    grid-row: span 2;
-}
-
-/* --- LAYOUT DEL PERFIL (FOTO + TEXTO) --- */
-.hero-profile {
-    display: flex;
-    align-items: center;
-    gap: 25px; /* Separación entre tu foto y el texto */
-    margin-bottom: 20px;
-}
-
-.hero-avatar {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%; /* La hace perfectamente circular */
-    object-fit: cover; /* Evita que tu foto se deforme */
-    border: 3px solid rgba(255, 0, 127, 0.5); /* Borde magenta */
-    box-shadow: 0 0 20px rgba(255, 0, 127, 0.2); /* Brillo tech suave */
-    flex-shrink: 0; /* Evita que la foto se aplaste si hay mucho texto */
-}
-
-/* Ajuste del contenedor de texto para que no se pegue */
-.hero-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.hero {
-    background: linear-gradient(135deg, #2c2c3e 0%, #1a1a24 100%);
-    justify-content: center;
-}
+/* =========================================
+   3. DIMENSIONES EN LA GRILLA
+   ========================================= */
+.hero, #modulo-asistencia { grid-column: span 2; grid-row: span 2; }
+.hero { background: linear-gradient(135deg, #2c2c3e 0%, #1a1a24 100%); justify-content: center; }
 .hero h1 { font-size: 3.5rem; color: #ff007f; margin-bottom: 0.5rem; line-height: 1; }
 .hero h2 { font-size: 1.2rem; color: #e0e0e0; font-weight: 400; margin-bottom: 1rem; }
+#modulo-nodo0, #modulo-estudios { grid-column: span 1; grid-row: span 2; }
+#modulo-capseta, .social-design { grid-column: span 2; grid-row: span 1; }
+.industrial-design, .visual-design { grid-column: span 2; grid-row: span 1; }
 
-/* Fila 3 y 4: Los Pilares Verticales (1 columna x 2 filas) */
-#modulo-nodo0, #modulo-estudios { 
-    grid-column: span 1; 
-    grid-row: span 2; 
-}
+/* =========================================
+   4. FONDOS
+   ========================================= */
+.social-design { background-image: linear-gradient(rgba(26, 26, 36, 0.5), rgba(26, 26, 36, 0.95)), url('../img/apandown.jpg'); background-size: cover; background-position: center; }
+.industrial-design { background-image: linear-gradient(rgba(26, 26, 36, 0.5), rgba(26, 26, 36, 0.95)), url('../img/tutu.jpg'); background-size: cover; background-position: center; }
+.visual-design { background-image: linear-gradient(rgba(26, 26, 36, 0.5), rgba(26, 26, 36, 0.95)), url('../img/k13.jpg'); background-size: cover; background-position: center; }
+.tech-app { background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px); background-size: 20px 20px; }
 
-/* Fila 5: La Base Visual (2 columnas x 1 fila) */
-/* Al darles 2 columnas, tendrán un formato panorámico ideal para mostrar las fotos de fondo */
-.industrial-design, .visual-design { 
-    grid-column: span 2; 
-    grid-row: span 1; 
-}
+/* =========================================
+   5. COMPONENTES UI GLOBALES
+   ========================================= */
+.status-indicator { display: inline-flex; align-items: center; gap: 8px; font-size: 0.75rem; text-transform: uppercase; background: rgba(0, 255, 127, 0.1); color: #00ff7f; padding: 4px 12px; border-radius: 20px; width: max-content; margin-bottom: 15px; }
+.status-indicator span { width: 8px; height: 8px; background-color: #00ff7f; border-radius: 50%; animation: pulse 1.5s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(0, 255, 127, 0.4); } 70% { box-shadow: 0 0 0 6px rgba(0, 255, 127, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 255, 127, 0); } }
+.btn-demo, .btn-code { width: 100%; padding: 10px; margin-top: 10px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; border: none; font-size: 0.8rem; display: flex; justify-content: center; align-items: center; gap: 8px; }
+.btn-demo { background-color: #ff007f; color: white; }
+.btn-demo:hover { background-color: #e60073; }
+.btn-code { background-color: rgba(255, 255, 255, 0.1); color: #fff; }
+.btn-code:hover { background-color: rgba(255, 255, 255, 0.2); }
+h2 i, h3 i { color: #00ff7f; margin-right: 8px; vertical-align: middle; }
+.hero h2 i { color: #ff007f; }
 
-/* --- FONDOS DE PROYECTOS FÍSICOS/VISUALES --- */
-.social-design {
-    background-image: linear-gradient(rgba(26, 26, 36, 0.5), rgba(26, 26, 36, 0.95)), url('../img/apandown.jpg');
-    background-size: cover; background-position: center;
-}
-.industrial-design {
-    background-image: linear-gradient(rgba(26, 26, 36, 0.5), rgba(26, 26, 36, 0.95)), url('../img/tutu.jpg');
-    background-size: cover; background-position: center;
-}
-.visual-design {
-    background-image: linear-gradient(rgba(26, 26, 36, 0.5), rgba(26, 26, 36, 0.95)), url('../img/k13.jpg');
-    background-size: cover; background-position: center;
-}
+/* =========================================
+   6. MÓDULO HERO (PERFIL)
+   ========================================= */
+.hero-profile { display: flex; align-items: center; gap: 25px; margin-bottom: 20px; }
+.hero-avatar { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 3px solid rgba(255, 0, 127, 0.5); box-shadow: 0 0 20px rgba(255, 0, 127, 0.2); flex-shrink: 0; }
+.hero-text { display: flex; flex-direction: column; justify-content: center; }
+.hero-contact { display: flex; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
+.hero-contact span { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; color: #e0e0e0; background: rgba(255, 255, 255, 0.1); padding: 6px 12px; border-radius: 20px; transition: background 0.3s ease; }
+.hero-contact span:hover { background: rgba(255, 255, 255, 0.2); cursor: pointer; }
 
-/* --- FONDOS DE APPS (PATRÓN TECH) --- */
-.tech-app {
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 20px 20px;
-}
+/* =========================================
+   7. MÓDULO VRIFIK ASISTENCIA
+   ========================================= */
+.asistencia-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; height: 100%; }
+.asistencia-controls { display: flex; flex-direction: column; justify-content: flex-start; }
+.vrifik-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
 
-/* --- COMPONENTES UI (BOTONES E INDICADORES) --- */
-.status-indicator {
-    display: inline-flex; align-items: center; gap: 8px; font-size: 0.75rem; text-transform: uppercase;
-    background: rgba(0, 255, 127, 0.1); color: #00ff7f; padding: 4px 12px; border-radius: 20px; width: max-content; margin-bottom: 15px;
-}
-.status-indicator span {
-    width: 8px; height: 8px; background-color: #00ff7f; border-radius: 50%;
-    animation: pulse 1.5s infinite;
-}
-@keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(0, 255, 127, 0.4); }
-    70% { box-shadow: 0 0 0 6px rgba(0, 255, 127, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(0, 255, 127, 0); }
-}
-.btn-demo, .btn-code {
-    width: 100%; 
-    padding: 10px; 
-    margin-top: 10px; 
-    border-radius: 6px; 
-    font-weight: 600; 
-    cursor: pointer; 
-    transition: all 0.3s ease; 
-    text-transform: uppercase; 
-    border: none; 
-    font-size: 0.8rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px; 
-}
+/* Logo Actualizado: Más grande y sin fondo forzado para el PNG */
+.app-logo { height: 80px; border-radius: 4px; object-fit: contain; }
 
-/* --- ESTILOS DE ÍCONOS --- */
-h2 i, h3 i {
-    color: #00ff7f; 
-    margin-right: 8px;
-    vertical-align: middle;
-}
-.hero h2 i {
-    color: #ff007f; 
-}
-.hero-contact {
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
-    flex-wrap: wrap;
-}
-.hero-contact span {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.85rem;
-    color: #e0e0e0;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 6px 12px;
-    border-radius: 20px;
-    transition: background 0.3s ease;
-}
-.hero-contact span:hover {
-    background: rgba(255, 255, 255, 0.2);
-    cursor: pointer;
-}
-
-/* --- INTERFACES DE MICRO-APPS INTERACTIVAS --- */
-.app-interface, .xpro-interface, .cto-interface { margin-top: 15px; display: flex; flex-direction: column; gap: 10px; }
-
-/* Asistencia - Input y Lista */
-.app-interface input {
-    padding: 10px; background-color: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; color: white; outline: none;
-}
-.app-interface input:focus { border-color: #00ff7f; }
-.data-list { list-style: none; max-height: 100px; overflow-y: auto; margin-top: 10px; }
+.asistencia-controls p strong { color: #00ff7f; font-weight: 600; }
+.column-interface { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+.column-interface input { width: 100%; padding: 10px; background-color: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; color: white; outline: none; }
+.column-interface input:focus { border-color: #00ff7f; }
+.asistencia-data { display: flex; flex-direction: column; background: rgba(0, 0, 0, 0.25); border-radius: 12px; padding: 15px; border: 1px inset rgba(255, 255, 255, 0.05); }
+.list-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 0.75rem; color: #a0a0b0; font-weight: 600; }
+.list-actions { display: flex; gap: 10px; }
+.btn-icon { background: transparent; border: none; color: #a0a0b0; cursor: pointer; font-size: 0.8rem; display: flex; align-items: center; gap: 4px; transition: color 0.3s ease; text-transform: uppercase; }
+.btn-icon:hover { color: #00ff7f; }
+.data-list { list-style: none; overflow-y: auto; }
+.large-list { max-height: 260px; flex-grow: 1; }
 .data-list li { background: rgba(0, 255, 127, 0.1); color: #00ff7f; padding: 6px 10px; border-radius: 4px; margin-bottom: 5px; font-size: 0.8rem; display: flex; justify-content: space-between; }
 
-/* Asistencia - Barra de Herramientas */
-.list-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    font-size: 0.75rem;
-    color: #a0a0b0;
-    font-weight: 600;
-}
-.list-actions {
-    display: flex;
-    gap: 10px;
-}
-.btn-icon {
-    background: transparent;
-    border: none;
-    color: #a0a0b0;
-    cursor: pointer;
-    font-size: 0.8rem;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    transition: color 0.3s ease;
-    text-transform: uppercase;
-}
-.btn-icon:hover {
-    color: #00ff7f; 
-}
+/* =========================================
+   8. MÓDULO NODO 0 (RADAR)
+   ========================================= */
+.nodo-terminal { background-color: #050a05; border: 1px solid rgba(0, 255, 0, 0.1); }
+.nodo-terminal h3, .nodo-terminal h3 i { color: #00ff00; font-family: monospace; }
+.status-indicator.alert { background: rgba(255, 136, 0, 0.1); color: #ff8800; }
+.status-indicator.alert span { background-color: #ff8800; animation: pulse-alert 1.5s infinite; }
+.nodo-interface { margin-top: 15px; display: flex; flex-direction: column; gap: 10px; }
+.radar-container { height: 120px; background-image: linear-gradient(rgba(0, 255, 0, 0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 0, 0.15) 1px, transparent 1px); background-size: 15px 15px; border: 1px solid rgba(0, 255, 0, 0.4); position: relative; overflow: hidden; border-radius: 4px; cursor: crosshair; }
+.radar-scanner { width: 100%; height: 2px; background: #00ff00; position: absolute; top: 0; left: 0; box-shadow: 0 0 10px #00ff00; animation: scan 3s linear infinite; }
+@keyframes scan { 0% { top: 0; opacity: 0; } 10%, 90% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
+.anomalia-dot { width: 10px; height: 10px; background-color: #ff8800; border-radius: 50%; position: absolute; top: 30%; left: 70%; box-shadow: 0 0 8px #ff8800; cursor: pointer; animation: blink-dot 1s infinite; transition: background-color 0.3s; }
+.anomalia-dot:hover { transform: scale(1.5); }
+@keyframes blink-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+.terminal-log { background: #000; border: 1px dashed rgba(0, 255, 0, 0.3); padding: 10px; font-family: 'Courier New', Courier, monospace; font-size: 0.75rem; color: #00ff00; height: 90px; overflow-y: auto; border-radius: 4px; line-height: 1.4; }
 
-/* --- LAYOUT EXPANDIDO PARA VRIFIK ASISTENCIA --- */
-#modulo-asistencia {
-    grid-column: span 2;
-    grid-row: span 2;
-}
-.asistencia-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    height: 100%;
-}
-.asistencia-controls {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-.column-interface {
-    flex-direction: column;
-    margin-top: 30px;
-}
-.column-interface input {
-    width: 100%;
-}
-.asistencia-data {
-    display: flex;
-    flex-direction: column;
-    background: rgba(0, 0, 0, 0.25);
-    border-radius: 12px;
-    padding: 15px;
-    border: 1px inset rgba(255, 255, 255, 0.05);
-}
-.large-list {
-    max-height: 260px; 
-    flex-grow: 1;
-}
-/* --- NODO 0 / OBSERVADOR CERO --- */
-.nodo-terminal {
-    background-color: #050a05; /* Un negro más verdoso */
-    border: 1px solid rgba(0, 255, 0, 0.1);
-}
+/* =========================================
+   9. MÓDULO FORMACIÓN
+   ========================================= */
+.estudios-lista { margin-top: 15px; display: flex; flex-direction: column; gap: 10px; overflow-y: auto; max-height: 280px; padding-right: 5px; }
+.estudios-lista::-webkit-scrollbar { width: 4px; }
+.estudios-lista::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); border-radius: 4px; }
+.estudios-lista::-webkit-scrollbar-thumb { background: #00ff7f; border-radius: 4px; }
+.estudio-item { background: rgba(0, 0, 0, 0.3); border-left: 3px solid #00ff7f; padding: 10px 12px; border-radius: 0 6px 6px 0; transition: transform 0.2s ease, background 0.2s ease; }
+.estudio-item:hover { transform: translateX(5px); background: rgba(0, 255, 127, 0.1); }
+.estudio-item h4 { font-size: 0.85rem; color: #ffffff; margin-bottom: 3px; }
+.estudio-item p { font-size: 0.75rem !important; color: #a0a0b0; font-family: monospace; }
 
-.nodo-terminal h3 {
-    color: #00ff00;
-    font-family: monospace;
-}
-
-.nodo-terminal h3 i { color: #00ff00; }
-
-/* Indicador de Alerta Naranja */
-.status-indicator.alert {
-    background: rgba(255, 136, 0, 0.1);
-    color: #ff8800;
-}
-.status-indicator.alert span {
-    background-color: #ff8800;
-    animation: pulse-alert 1.5s infinite;
-}
-@keyframes pulse-alert {
-    0% { box-shadow: 0 0 0 0 rgba(255, 136, 0, 0.4); }
-    70% { box-shadow: 0 0 0 6px rgba(255, 136, 0, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 136, 0, 0); }
-}
-
-.nodo-interface {
-    margin-top: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-/* Grilla del Radar */
-.radar-container {
-    height: 120px;
-    background-image: 
-        linear-gradient(rgba(0, 255, 0, 0.15) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 255, 0, 0.15) 1px, transparent 1px);
-    background-size: 15px 15px;
-    border: 1px solid rgba(0, 255, 0, 0.4);
-    position: relative;
-    overflow: hidden;
-    border-radius: 4px;
-    cursor: crosshair;
-}
-
-/* Línea de escaneo animada */
-.radar-scanner {
-    width: 100%;
-    height: 2px;
-    background: #00ff00;
-    position: absolute;
-    top: 0;
-    left: 0;
-    box-shadow: 0 0 10px #00ff00;
-    animation: scan 3s linear infinite;
-}
-@keyframes scan {
-    0% { top: 0; opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { top: 100%; opacity: 0; }
-}
-
-/* El punto que el usuario debe cazar */
-.anomalia-dot {
-    width: 10px;
-    height: 10px;
-    background-color: #ff8800;
-    border-radius: 50%;
-    position: absolute;
-    top: 30%;
-    left: 70%;
-    box-shadow: 0 0 8px #ff8800;
-    cursor: pointer;
-    animation: blink-dot 1s infinite;
-    transition: background-color 0.3s;
-}
-.anomalia-dot:hover {
-    transform: scale(1.5);
-}
-@keyframes blink-dot {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.2; }
-}
-
-/* Log de Terminal */
-.terminal-log {
-    background: #000;
-    border: 1px dashed rgba(0, 255, 0, 0.3);
-    padding: 10px;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.75rem;
-    color: #00ff00;
-    height: 90px;
-    overflow-y: auto;
-    border-radius: 4px;
-    line-height: 1.4;
-}
-/* --- MÓDULO DE FORMACIÓN (LOG DE ESTUDIOS) --- */
-.estudios-lista {
-    margin-top: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    overflow-y: auto;
-    max-height: 280px; /* Asegura que no rompa el alto de la tarjeta */
-    padding-right: 5px;
-}
-
-/* Personalizamos la barra de scroll para que se vea Tech */
-.estudios-lista::-webkit-scrollbar {
-    width: 4px;
-}
-.estudios-lista::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 4px;
-}
-.estudios-lista::-webkit-scrollbar-thumb {
-    background: #00ff7f;
-    border-radius: 4px;
-}
-
-.estudio-item {
-    background: rgba(0, 0, 0, 0.3);
-    border-left: 3px solid #00ff7f;
-    padding: 10px 12px;
-    border-radius: 0 6px 6px 0;
-    transition: transform 0.2s ease, background 0.2s ease;
-}
-
-.estudio-item:hover {
-    transform: translateX(5px);
-    background: rgba(0, 255, 127, 0.1);
-}
-
-.estudio-item h4 {
-    font-size: 0.85rem;
-    color: #ffffff;
-    margin-bottom: 3px;
-}
-
-.estudio-item p {
-    font-size: 0.75rem !important;
-    color: #a0a0b0;
-    font-family: monospace;
-}
-
-
-/* ======================================================
-   RESPONSIVE DESIGN (MEDIA QUERIES SIEMPRE AL FINAL)
-   ====================================================== */
+/* =========================================
+   10. RESPONSIVE DESIGN (NUNCA MOVER)
+   ========================================= */
 @media (max-width: 1024px) { 
     .bento-container { grid-template-columns: repeat(2, 1fr); } 
     .hero, .social-design { grid-column: span 2; } 
 }
-
 @media (max-width: 900px) {
-    
-    .asistencia-layout {
-    
-            grid-template-columns: 1fr;
-
-        }
-
-
-    @media (max-width: 900px) {
-    .asistencia-layout {
-        grid-template-columns: 1fr;
-    }
-    /* Nuevo: Apilar foto y texto en móviles */
-    .hero-profile {
-        flex-direction: column;
-        text-align: center;
-    }
+    .asistencia-layout { grid-template-columns: 1fr; }
+    .hero-profile { flex-direction: column; text-align: center; }
 }
-}
-
 @media (max-width: 600px) { 
     .bento-container { grid-template-columns: 1fr; } 
     .hero, .tech-app, .social-design, .industrial-design, .visual-design { grid-column: span 1; } 
-    /* Fuerza al módulo asistencia a ocupar 1 columna en móviles */
     #modulo-asistencia { grid-column: span 1; grid-row: auto; }
 }

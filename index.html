@@ -15,17 +15,14 @@
         <!-- 1. Presentación Principal (2x2) -->
         <article class="bento-item hero">
             <div class="hero-profile">
-                <!--  foto -->
+                <!-- foto -->
                 <img src="img/perfil.png" alt="Kisi Toledo" class="hero-avatar">
-
                 <div class="hero-text">
                     <h1>Kisi Toledo</h1>
                     <h2><i class="ph ph-code"></i> Diseñadora Industrial & UX/UI. Trainee Front-End.</h2>
-                    <p>Especialista en diseño inclusivo, prototipado avanzado y desarrollo de soluciones digitales
-                        lógicas y escalables.</p>
+                    <p>Especialista en diseño inclusivo, prototipado avanzado y desarrollo de soluciones digitales lógicas y escalables.</p>
                 </div>
             </div>
-
             <div class="hero-contact">
                 <span><i class="ph ph-map-pin"></i> Curanilahue, Bío Bío</span>
                 <span><i class="ph ph-envelope-simple"></i> kisitoledom@gmail.com</span>
@@ -33,27 +30,36 @@
             </div>
         </article>
 
-        <!-- 2. vrifik asistencia (2x2) -->
+        <!-- 2. vrifik asistencia (2x2) - ÚNICA INSTANCIA -->
         <article class="bento-item tech-app" id="modulo-asistencia">
             <div class="asistencia-layout">
+                <!-- Lado Izquierdo: Controles y Presentación -->
                 <div class="asistencia-controls">
-                    <div class="status-indicator"><span></span> Herramienta Funcional</div>
-                    <h3><i class="ph ph-fingerprint"></i> vrifik asistencia</h3>
-                    <p>Herramienta libre: Pasa lista rápido, cuenta a los presentes y copia el registro.</p>
+                    <div class="vrifik-header">
+                        <!-- Tu logo integrado (Actualizado a PNG) -->
+                        <img src="img/LOGO_FINAL.png" alt="Logo vrifik asistencia" class="app-logo">
+                        <div class="status-indicator"><span></span> SAAS DEVELOPED</div>
+                    </div>
+                    
+                    <h3>vrifik asistencia</h3>
+                    <p>App desarrollada para registro ágil en OTECs y ONGs. Diseño UX/UI propio. <strong>Regalo:</strong> Usa esta terminal funcional para pasar tu lista real y copiarla.</p>
+
                     <div class="app-interface column-interface">
-                        <input type="text" id="asistencia-input" placeholder="Nombre del colaborador..."
-                            autocomplete="off">
+                        <input type="text" id="asistencia-input" placeholder="Nombre del colaborador..." autocomplete="off">
                         <button id="btn-registrar" class="btn-demo"><i class="ph ph-plus-circle"></i> Fichar</button>
                     </div>
+                    
+                    <!-- Botón para ver tu proceso de diseño -->
+                    <button id="btn-ver-specs" class="btn-code" style="margin-top: 15px;"><i class="ph ph-blueprint"></i> Ver Proceso UX/UI</button>
                 </div>
+
+                <!-- Lado Derecho: Visualización de Datos -->
                 <div class="asistencia-data">
                     <div class="list-header">
                         <span id="contador-asistencia">0 presentes</span>
                         <div class="list-actions">
-                            <button id="btn-copiar" class="btn-icon" title="Copiar lista"><i class="ph ph-copy"></i>
-                                Copiar</button>
-                            <button id="btn-limpiar" class="btn-icon" title="Borrar lista"><i
-                                    class="ph ph-trash"></i></button>
+                            <button id="btn-copiar" class="btn-icon" title="Copiar lista"><i class="ph ph-copy"></i> Copiar</button>
+                            <button id="btn-limpiar" class="btn-icon" title="Borrar lista"><i class="ph ph-trash"></i></button>
                         </div>
                     </div>
                     <ul id="lista-asistencia" class="data-list large-list"></ul>
@@ -90,12 +96,12 @@
             <h3><i class="ph ph-plant"></i> Fundación Apandown</h3>
             <p>Jardín Inclusivo en Puerto Montt. Diseño colaborativo y medioambiental.</p>
         </article>
+
         <!-- 6. Formación Continua (Vertical Derecho 1x2) -->
         <article class="bento-item tech-app" id="modulo-estudios">
             <div class="status-indicator"><span></span> UPGRADING SKILLS</div>
             <h3><i class="ph ph-certificate"></i> Formación</h3>
             <p>Evolución técnica y académica continua.</p>
-
             <div class="estudios-lista">
                 <div class="estudio-item">
                     <h4>Desarrollo Front-End Trainee</h4>
@@ -130,7 +136,7 @@
 
         <!-- 7. Juguetes Universales (Horizontal Abajo 2x1) -->
         <article class="bento-item industrial-design">
-            <h3><i class="ph ph-cube"></i> Juguetes Universales</h3>
+            <h3><i class="ph ph-cube"></i> Camión Tutú</h3>
             <p>Juguete Universal del Hito de Pinza. Desarrollo en madera e impresión 3D.</p>
         </article>
 
@@ -144,5 +150,4 @@
 
     <script src="js/app.js"></script>
 </body>
-
 </html>
