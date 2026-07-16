@@ -140,7 +140,12 @@ document.addEventListener("DOMContentLoaded", () => {
     
     const galeriaK13 = [
         'img/k13-1.png',
-        'img/k13-diamante.png',           
+        'img/k13-diamante.png', 
+        'img/k13-credito.png',     
+        'img/k13-like.png',  
+        'img/k13-soup.png',
+        'img/k13-tv.png',
+        'img/k13-love.png',
         'img/k13-punk.png'                
     ];
 
