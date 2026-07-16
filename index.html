@@ -11,11 +11,9 @@
 
 <body>
     <main class="bento-container">
-
-        <!-- 1. Presentación Principal (2x2) -->
+<!-- 1. Presentación Principal + Formación (2x2) -->
         <article class="bento-item hero">
             <div class="hero-profile">
-                <!-- foto -->
                 <img src="img/perfil.png" alt="Kisi Toledo" class="hero-avatar">
                 <div class="hero-text">
                     <h1>Kisi Toledo</h1>
@@ -23,10 +21,55 @@
                     <p>Especialista en diseño inclusivo, prototipado avanzado y desarrollo de soluciones digitales lógicas y escalables.</p>
                 </div>
             </div>
+
             <div class="hero-contact">
                 <span><i class="ph ph-map-pin"></i> Curanilahue, Bío Bío</span>
-                <span><i class="ph ph-envelope-simple"></i> kisitoledom@gmail.com</span>
-                <span><i class="ph ph-github-logo"></i> GitHub</span>
+                
+                <!-- Enlace de Correo (mailto) -->
+                <a href="mailto:kisitoledom@gmail.com" class="contact-link">
+                    <i class="ph ph-envelope-simple"></i> kisitoledom@gmail.com
+                </a>
+                
+                <!-- Enlace a GitHub (target="_blank" abre en nueva pestaña) -->
+                <!-- ¡RECUERDA CAMBIAR "tu_usuario" POR TU USUARIO REAL DE GITHUB! -->
+                <a href="https://github.com/kisitoledom-coder" target="_blank" rel="noopener noreferrer" class="contact-link">
+                    <i class="ph ph-github-logo"></i> GitHub
+                </a>
+            </div>
+
+            <!-- Neva Sección Integrada: Formación -->
+            <div class="hero-formacion">
+                <h3 class="formacion-title"><i class="ph ph-certificate"></i> Evolución Técnica y Académica</h3>
+                <div class="estudios-lista hero-lista">
+                    <div class="estudio-item">
+                        <h4>Desarrollo Front-End Trainee</h4>
+                        <p>Bootcamp 441 hrs [Actual]</p>
+                    </div>
+                    <div class="estudio-item">
+                        <h4>Diseñadora UX/UI</h4>
+                        <p>UNAB / SOFOFA [2025]</p>
+                    </div>
+                    <div class="estudio-item">
+                        <h4>Diplomado Diseño y Prog. Web</h4>
+                        <p>2024 - 2025</p>
+                    </div>
+                    <div class="estudio-item">
+                        <h4>Diplomado Diseño Web y UX/UI</h4>
+                        <p>2024 - 2025</p>
+                    </div>
+                    <div class="estudio-item">
+                        <h4>Diplomado Gestión Ágil</h4>
+                        <p>2024 - 2025</p>
+                    </div>
+                    <div class="estudio-item">
+                        <h4>Diplomado Marketing Digital</h4>
+                        <p>2024 - 2025</p>
+                    </div>
+                    <div class="estudio-item">
+                        <h4>Diseño Industrial y Licenciatura</h4>
+                        <p>Universidad del Bío Bío [2016]</p>
+                    </div>
+                </div>
             </div>
         </article>
 
@@ -119,67 +162,52 @@
             </div>
         </article>
 
-        <!-- 5. Proyectos Sociales (Horizontal Centro Inferior 2x1) -->
+        <!-- 5. Proyectos de Impacto Social (Horizontal Centro Inferior 3x1) -->
         <article class="bento-item social-design">
-            <h3><i class="ph ph-plant"></i> Fundación Apandown</h3>
-            <p>Jardín Inclusivo en Puerto Montt. Diseño colaborativo y medioambiental.</p>
-        </article>
-
-        <!-- 6. Formación Continua (Vertical Derecho 1x2) -->
-        <article class="bento-item tech-app" id="modulo-estudios">
-            <div class="status-indicator"><span></span> UPGRADING SKILLS</div>
-            <h3><i class="ph ph-certificate"></i> Formación</h3>
-            <p>Evolución técnica y académica continua.</p>
-            <div class="estudios-lista">
-                <div class="estudio-item">
-                    <h4>Desarrollo Front-End Trainee</h4>
-                    <p>Bootcamp 441 hrs [Actual]</p>
-                </div>
-                <div class="estudio-item">
-                    <h4>Diseñadora UX/UI</h4>
-                    <p>UNAB / SOFOFA [2025]</p>
-                </div>
-                <div class="estudio-item">
-                    <h4>Diplomado Diseño y Prog. Web</h4>
-                    <p>2024 - 2025</p>
-                </div>
-                <div class="estudio-item">
-                    <h4>Diplomado Diseño Web y UX/UI</h4>
-                    <p>2024 - 2025</p>
-                </div>
-                <div class="estudio-item">
-                    <h4>Diplomado Gestión Ágil</h4>
-                    <p>2024 - 2025</p>
-                </div>
-                <div class="estudio-item">
-                    <h4>Diplomado Marketing Digital</h4>
-                    <p>2024 - 2025</p>
-                </div>
-                <div class="estudio-item">
-                    <h4>Diseño Industrial y Licenciatura</h4>
-                    <p>Universidad del Bío Bío [2016]</p>
-                </div>
+            <div class="status-indicator"><span></span> DISEÑO E IMPACTO SOCIAL</div>
+            <h3><i class="ph ph-hands-clapping"></i> Proyectos Sociales</h3>
+            <p>Diseño y gestión de iniciativas colaborativas enfocadas en inclusión, accesibilidad y medioambiente.</p>
+            
+            <!-- Contenedor de Etiquetas (Tags) de tus proyectos -->
+            <div class="project-tags">
+                <span class="tag"><i class="ph ph-mask-happy"></i> Teatro de Marionetas: Derechos en Escena</span>
+                <span class="tag"><i class="ph ph-plant"></i> Cultivar-té</span>
+                <span class="tag"><i class="ph ph-waves"></i> Sintonía</span>
+                <span class="tag"><i class="ph ph-wheelchair"></i> Jardín Inclusivo Apandown</span>
             </div>
         </article>
 
-        <!-- 7. Juguetes Universales (Horizontal Abajo 2x1) -->
-        <article class="bento-item industrial-design">
-            <h3><i class="ph ph-cube"></i> Camión Tutú</h3>
-            <p>Juguete Universal del Hito de Pinza. Desarrollo en madera e impresión 3D.</p>
+        <!-- 7. Diseño Industrial Inclusivo (Horizontal Abajo Izquierda 2x1) -->
+        <article class="bento-item industrial-design" id="modulo-juguetes">
+            <div class="status-indicator"><span></span> IMPRESIÓN 3D & MADERA</div>
+            <h3><i class="ph ph-cube"></i> Juguetes Universales</h3>
+            <p>Diseño físico centrado en accesibilidad motriz y cognitiva para niños con y sin discapacidad.</p>
+            
+            <div class="project-tags">
+                <span class="tag"><i class="ph ph-hand-grabbing"></i> Camión Tutú (Hito de Pinza)</span>
+                <span class="tag"><i class="ph ph-dots-nine"></i> Alfabetizador Braille</span>
+            </div>
+            
+            <button id="btn-ver-juguetes" class="btn-code" style="margin-top: auto; width: max-content; padding: 8px 16px;"><i class="ph ph-images"></i> Ver Prototipos</button>
         </article>
 
-        <!-- 8. Colección K13 (Horizontal Abajo 2x1) -->
-        <article class="bento-item visual-design">
-            <h3><i class="ph ph-pencil-line"></i> Colección K13</h3>
-            <p>Ilustración minimalista y desarrollo de material pedagógico estandarizado.</p>
+        <!-- 8. Colección K13 (Horizontal Abajo Derecha 2x1) -->
+        <article class="bento-item visual-design" id="modulo-k13">
+            <div class="status-indicator" style="background: rgba(255, 0, 127, 0.1); color: #ff007f;">
+                <span style="background-color: #ff007f;"></span> VISUAL ART
+            </div>
+            <h3><i class="ph ph-diamond"></i> Colección K13</h3>
+            <p>Exploración estética y visual: Arte punk retro de diamantes.</p>
+            
+            <button id="btn-ver-k13" class="btn-code" style="margin-top: auto; width: max-content; padding: 8px 16px;"><i class="ph ph-palette"></i> Ver Galería K13</button>
         </article>
 
-        <!-- Ventana Modal para Especificaciones UX/UI -->
+<!-- Ventana Modal Dinámica para Galerías -->
         <div id="ux-modal" class="modal-overlay">
             <div class="modal-content">
                 <button id="btn-cerrar-modal" class="btn-cerrar"><i class="ph ph-x"></i></button>
-                <!-- Aquí cargamos lámina de diseño -->
-                <img src="img/vrifik-ui.png" alt="Especificaciones UX/UI de vrifik asistencia" class="modal-img">
+                <!-- La imagen ahora está vacía por defecto, JS la rellenará -->
+                <img src="" alt="Galería de Proyectos Kisi Toledo" id="modal-img-dinamica" class="modal-img">
             </div>
         </div>
 

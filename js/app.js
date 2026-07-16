@@ -106,28 +106,45 @@ document.addEventListener("DOMContentLoaded", () => {
             }, delay * mensajes.length + 3500);
         });
     }
+
     /* ========================================================
-       3. LÓGICA DE VENTANA MODAL (Galería UX/UI)
+       LÓGICA DE VENTANA MODAL DINÁMICA (Galería Universal)
        ======================================================== */
-    const btnVerSpecs = document.getElementById('btn-ver-specs');
     const modal = document.getElementById('ux-modal');
     const btnCerrar = document.getElementById('btn-cerrar-modal');
+    const modalImg = document.getElementById('modal-img-dinamica');
 
-    if(btnVerSpecs && modal && btnCerrar) {
-        // Abrir Modal
-        btnVerSpecs.addEventListener('click', () => {
+    // Botones de cada proyecto
+    const btnVerSpecs = document.getElementById('btn-ver-specs'); // vrifik asistencia
+    const btnVerJuguetes = document.getElementById('btn-ver-juguetes'); // Camión Tutú / Braille
+    const btnVerK13 = document.getElementById('btn-ver-k13'); // Arte Punk
+
+    // Función constructora que abre el modal y cambia la foto
+    const abrirModal = (rutaImagen) => {
+        if(modalImg && modal) {
+            modalImg.src = rutaImagen;
             modal.classList.add('active');
-        });
+        }
+    };
 
-        // Cerrar con el botón X
+    // Asignamos las rutas de tus imágenes a cada botón
+    // IMPORTANTE: Asegúrate de guardar tus fotos con estos nombres en la carpeta 'img'
+    if(btnVerSpecs) btnVerSpecs.addEventListener('click', () => abrirModal('img/1b.png'));
+    if(btnVerJuguetes) btnVerJuguetes.addEventListener('click', () => abrirModal('img/juguetes.jpg'));
+    if(btnVerK13) btnVerK13.addEventListener('click', () => abrirModal('img/k13-arte.jpg'));
+
+    // Lógica para cerrar el modal
+    if(btnCerrar && modal) {
         btnCerrar.addEventListener('click', () => {
             modal.classList.remove('active');
+            modalImg.src = ''; // Limpiamos la imagen al cerrar
         });
 
         // Cerrar al hacer clic en el fondo oscuro
         modal.addEventListener('click', (e) => {
             if(e.target === modal) {
                 modal.classList.remove('active');
+                modalImg.src = '';
             }
         });
     }
@@ -181,5 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 capsetaLog.scrollTop = capsetaLog.scrollHeight;
             }, delay * scriptPasos.length + 1000);
         });
-    }
+    } 
+    
 });
+ 

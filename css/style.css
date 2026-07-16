@@ -32,12 +32,14 @@ body { background-color: #0d0d12; color: #ffffff; min-height: 100vh; padding: 2r
     background-position: right center;
 }
 
-#modulo-nodo0, #modulo-estudios { grid-column: span 1; grid-row: span 2; }
-#modulo-capseta, .social-design { grid-column: span 2; grid-row: span 1; }
+/* Fila 3 y 4: El Pilar Vertical (Observador Cero se queda a la izquierda) */
+#modulo-nodo0 { grid-column: span 1; grid-row: span 2; }
 
-/* FIX: Obligamos a Tutú a ir a la izquierda y K13 a la derecha en la misma fila */
-.industrial-design { grid-column: 1 / span 2; grid-row: span 1; }
-.visual-design { grid-column: 3 / span 2; grid-row: span 1; }
+/* Fila 3 y 4: Los Centros Horizontales (¡Ahora ocupan 3 columnas para llenar el vacío!) */
+#modulo-capseta, .social-design { grid-column: span 3; grid-row: span 1; }
+
+/* Fila 5: La Base Visual */
+.industrial-design, .visual-design { grid-column: span 2; grid-row: span 1; }
 
 /* =========================================
    4. FONDOS (IMÁGENES Y PATRONES)
@@ -80,8 +82,37 @@ h2 i, h3 i { color: #00ff7f; margin-right: 8px; vertical-align: middle; }
 .hero-avatar { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 3px solid rgba(255, 0, 127, 0.5); box-shadow: 0 0 20px rgba(255, 0, 127, 0.2); flex-shrink: 0; }
 .hero-text { display: flex; flex-direction: column; justify-content: center; }
 .hero-contact { display: flex; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
-.hero-contact span { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; color: #e0e0e0; background: rgba(255, 255, 255, 0.1); padding: 6px 12px; border-radius: 20px; transition: background 0.3s ease; }
-.hero-contact span:hover { background: rgba(255, 255, 255, 0.2); cursor: pointer; }
+
+/* Estilos compartidos para los textos (span) y los enlaces (a) */
+.hero-contact span, .hero-contact .contact-link { 
+    display: flex; align-items: center; gap: 6px; font-size: 0.85rem; color: #e0e0e0; 
+    background: rgba(255, 255, 255, 0.1); padding: 6px 12px; border-radius: 20px; 
+    transition: background 0.3s ease, color 0.3s ease; 
+    text-decoration: none; /* Quita el subrayado azul típico de los enlaces */
+}
+
+/* Efecto hover solo para los enlaces interactivos */
+.hero-contact .contact-link:hover { 
+    background: rgba(255, 255, 255, 0.2); 
+    color: #00ff7f; /* Se ilumina un poco al pasar el mouse */
+    cursor: pointer; 
+}
+/* Integración de Formación en el Hero */
+.hero { justify-content: flex-start; } /* Alinea todo arriba para dar espacio */
+.hero-formacion {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+    display: flex; flex-direction: column;
+    overflow: hidden;
+}
+.formacion-title {
+    font-size: 0.85rem; color: #00ff7f; margin-bottom: 10px;
+    text-transform: uppercase; letter-spacing: 1px;
+}
+.hero-lista {
+    max-height: 135px; /* Altura perfecta para que no desborde tu tarjeta */
+}
 
 /* =========================================
    7. MÓDULO VRIFIK ASISTENCIA
@@ -233,6 +264,36 @@ h2 i, h3 i { color: #00ff7f; margin-right: 8px; vertical-align: middle; }
 @media (max-width: 900px) {
     .capseta-layout { grid-template-columns: 1fr; }
     .capseta-console { min-height: 150px; }
+}
+
+/* =========================================
+   13. MÓDULO PROYECTOS SOCIALES (TAGS)
+   ========================================= */
+.project-tags {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los tags salten a la siguiente línea si no caben */
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.tag {
+    background: rgba(0, 255, 127, 0.1);
+    border: 1px solid rgba(0, 255, 127, 0.3);
+    color: #00ff7f;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.tag:hover {
+    background: rgba(0, 255, 127, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 255, 127, 0.1);
 }
 
 /* =========================================
