@@ -18,16 +18,31 @@ body { background-color: #0d0d12; color: #ffffff; min-height: 100vh; padding: 2r
 /* =========================================
    3. DIMENSIONES EN LA GRILLA
    ========================================= */
-.hero, #modulo-asistencia { grid-column: span 2; grid-row: span 2; }
-.hero { background: linear-gradient(135deg, #2c2c3e 0%, #1a1a24 100%); justify-content: center; }
+/* Fila 1 y 2: Bloques Gigantes Superiores */
+.hero { grid-column: span 2; grid-row: span 2; background: linear-gradient(135deg, #2c2c3e 0%, #1a1a24 100%); justify-content: center; }
 .hero h1 { font-size: 3.5rem; color: #ff007f; margin-bottom: 0.5rem; line-height: 1; }
 .hero h2 { font-size: 1.2rem; color: #e0e0e0; font-weight: 400; margin-bottom: 1rem; }
+
+/* Módulo Asistencia con fondo de interfaz de App */
+#modulo-asistencia { 
+    grid-column: span 2; 
+    grid-row: span 2; 
+    background-image: linear-gradient(to right, rgba(13, 13, 18, 0.98) 40%, rgba(13, 13, 18, 0.1)), url('../img/vrifik-ui.jpg');
+    background-size: cover;
+    background-position: right center;
+}
+
+/* Fila 3 y 4: Los Pilares Verticales */
 #modulo-nodo0, #modulo-estudios { grid-column: span 1; grid-row: span 2; }
+
+/* Fila 3 y 4: Los Centros Horizontales */
 #modulo-capseta, .social-design { grid-column: span 2; grid-row: span 1; }
+
+/* Fila 5: La Base Visual */
 .industrial-design, .visual-design { grid-column: span 2; grid-row: span 1; }
 
 /* =========================================
-   4. FONDOS
+   4. FONDOS (IMÁGENES Y PATRONES)
    ========================================= */
 .social-design { background-image: linear-gradient(rgba(26, 26, 36, 0.5), rgba(26, 26, 36, 0.95)), url('../img/apandown.jpg'); background-size: cover; background-position: center; }
 .industrial-design { background-image: linear-gradient(rgba(26, 26, 36, 0.5), rgba(26, 26, 36, 0.95)), url('../img/tutu.jpg'); background-size: cover; background-position: center; }
@@ -65,14 +80,23 @@ h2 i, h3 i { color: #00ff7f; margin-right: 8px; vertical-align: middle; }
 .asistencia-controls { display: flex; flex-direction: column; justify-content: flex-start; }
 .vrifik-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
 
-/* Logo Actualizado: Más grande y sin fondo forzado para el PNG */
+/* Logo Actualizado */
 .app-logo { height: 80px; border-radius: 4px; object-fit: contain; }
 
 .asistencia-controls p strong { color: #00ff7f; font-weight: 600; }
 .column-interface { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
 .column-interface input { width: 100%; padding: 10px; background-color: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; color: white; outline: none; }
 .column-interface input:focus { border-color: #00ff7f; }
-.asistencia-data { display: flex; flex-direction: column; background: rgba(0, 0, 0, 0.25); border-radius: 12px; padding: 15px; border: 1px inset rgba(255, 255, 255, 0.05); }
+
+/* Fondo tipo cristal (Glassmorphism) para la lista */
+.asistencia-data { 
+    display: flex; flex-direction: column; 
+    background: rgba(0, 0, 0, 0.5); 
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 12px; padding: 15px; border: 1px solid rgba(255, 255, 255, 0.1); 
+}
+
 .list-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 0.75rem; color: #a0a0b0; font-weight: 600; }
 .list-actions { display: flex; gap: 10px; }
 .btn-icon { background: transparent; border: none; color: #a0a0b0; cursor: pointer; font-size: 0.8rem; display: flex; align-items: center; gap: 4px; transition: color 0.3s ease; text-transform: uppercase; }
@@ -110,7 +134,114 @@ h2 i, h3 i { color: #00ff7f; margin-right: 8px; vertical-align: middle; }
 .estudio-item p { font-size: 0.75rem !important; color: #a0a0b0; font-family: monospace; }
 
 /* =========================================
-   10. RESPONSIVE DESIGN (NUNCA MOVER)
+   10. MÓDULO CAPSETA (SIMULADOR)
+   ========================================= */
+#modulo-capseta {
+    /* Usamos tu captura de la hoja de cálculo de fondo con efecto oscurecido */
+    background-image: linear-gradient(to right, rgba(13, 13, 18, 0.98) 45%, rgba(13, 13, 18, 0.3)), url('../img/capseta-db.jpg');
+    background-size: cover;
+    background-position: left center;
+}
+
+.capseta-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    height: 100%;
+}
+
+.capseta-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.capseta-form {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+}
+
+.tech-input {
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    color: #a0a0b0;
+    outline: none;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.tech-input:focus {
+    border-color: #00ff7f;
+    color: #fff;
+}
+
+.capseta-console {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px dashed rgba(0, 255, 127, 0.3);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.console-header {
+    background: rgba(0, 255, 127, 0.1);
+    color: #00ff7f;
+    padding: 5px 10px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-bottom: 1px dashed rgba(0, 255, 127, 0.3);
+}
+
+.console-body {
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.75rem;
+    color: #00ff7f;
+    flex-grow: 1;
+    overflow-y: auto;
+    line-height: 1.5;
+}
+
+/* Ajuste Responsive para Capseta */
+@media (max-width: 900px) {
+    .capseta-layout { grid-template-columns: 1fr; }
+    .capseta-console { min-height: 150px; }
+}
+
+/* =========================================
+   11. VENTANA MODAL (POP-UP)
+   ========================================= */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.modal-overlay.active { opacity: 1; visibility: visible; }
+.modal-content { position: relative; max-width: 90vw; max-height: 90vh; }
+.modal-img { width: 100%; height: 100%; object-fit: contain; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+.btn-cerrar {
+    position: absolute; top: -40px; right: -40px; background: transparent; border: none;
+    color: #fff; font-size: 2rem; cursor: pointer; transition: color 0.3s;
+}
+.btn-cerrar:hover { color: #ff007f; }
+
+/* =========================================
+   12. RESPONSIVE DESIGN (NUNCA MOVER)
    ========================================= */
 @media (max-width: 1024px) { 
     .bento-container { grid-template-columns: repeat(2, 1fr); } 

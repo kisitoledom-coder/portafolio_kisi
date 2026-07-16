@@ -36,8 +36,6 @@
                 <!-- Lado Izquierdo: Controles y Presentación -->
                 <div class="asistencia-controls">
                     <div class="vrifik-header">
-                        <!-- Tu logo integrado (Actualizado a PNG) -->
-                        <img src="img/LOGO_FINAL.png" alt="Logo vrifik asistencia" class="app-logo">
                         <div class="status-indicator"><span></span> SAAS DEVELOPED</div>
                     </div>
                     
@@ -86,9 +84,39 @@
 
         <!-- 4. Capseta (Horizontal Centro Superior 2x1) -->
         <article class="bento-item tech-app" id="modulo-capseta">
-            <h3><i class="ph ph-graduation-cap"></i> Capseta</h3>
-            <p>Arquitectura y modelo de licenciamiento para plataforma de entrenamiento técnico modular.</p>
-            <button class="btn-code"><i class="ph ph-tree-structure"></i> Ver Estructura</button>
+            <div class="capseta-layout">
+                <!-- Panel de Control Izquierdo -->
+                <div class="capseta-info">
+                    <div class="status-indicator"><span></span> APPS SCRIPT ENGINE</div>
+                    <h3><i class="ph ph-graduation-cap"></i> CAPSETA_CORE v4.4</h3>
+                    <p>Motor de generación automática de cursos. Inyecta variables en Google Sheets, procesa algoritmos de ponderación y exporta el diseño instruccional en PDF.</p>
+                    
+                    <div class="capseta-form">
+                        <div class="input-group">
+                            <select id="capseta-rubro" class="tech-input">
+                                <option value="Carpintería">Rubro: Carpintería</option>
+                                <option value="Soldadura">Rubro: Soldadura</option>
+                                <option value="Procesamiento Marino">Rubro: Procesamiento Marino</option>
+                            </select>
+                            <select id="capseta-nivel" class="tech-input">
+                                <option value="1">Nivel 1: Operación Base</option>
+                                <option value="2">Nivel 2: Especialización</option>
+                                <option value="3">Nivel 3: Dominio Avanzado</option>
+                                <option value="4">Nivel 4: Riesgo Crítico</option>
+                            </select>
+                        </div>
+                        <button id="btn-generar-curso" class="btn-demo"><i class="ph ph-file-pdf"></i> Generar Arquitectura</button>
+                    </div>
+                </div>
+
+                <!-- Terminal de Registro Derecho -->
+                <div class="capseta-console">
+                    <div class="console-header">Terminal de Salida</div>
+                    <div id="capseta-log" class="console-body">
+                        > Esperando parámetros (Payload)...
+                    </div>
+                </div>
+            </div>
         </article>
 
         <!-- 5. Proyectos Sociales (Horizontal Centro Inferior 2x1) -->
@@ -145,6 +173,15 @@
             <h3><i class="ph ph-pencil-line"></i> Colección K13</h3>
             <p>Ilustración minimalista y desarrollo de material pedagógico estandarizado.</p>
         </article>
+
+        <!-- Ventana Modal para Especificaciones UX/UI -->
+        <div id="ux-modal" class="modal-overlay">
+            <div class="modal-content">
+                <button id="btn-cerrar-modal" class="btn-cerrar"><i class="ph ph-x"></i></button>
+                <!-- Aquí cargamos lámina de diseño -->
+                <img src="img/vrifik-ui.png" alt="Especificaciones UX/UI de vrifik asistencia" class="modal-img">
+            </div>
+        </div>
 
     </main>
 

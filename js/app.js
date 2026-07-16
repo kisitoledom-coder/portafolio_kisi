@@ -106,4 +106,80 @@ document.addEventListener("DOMContentLoaded", () => {
             }, delay * mensajes.length + 3500);
         });
     }
+    /* ========================================================
+       3. LÓGICA DE VENTANA MODAL (Galería UX/UI)
+       ======================================================== */
+    const btnVerSpecs = document.getElementById('btn-ver-specs');
+    const modal = document.getElementById('ux-modal');
+    const btnCerrar = document.getElementById('btn-cerrar-modal');
+
+    if(btnVerSpecs && modal && btnCerrar) {
+        // Abrir Modal
+        btnVerSpecs.addEventListener('click', () => {
+            modal.classList.add('active');
+        });
+
+        // Cerrar con el botón X
+        btnCerrar.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        // Cerrar al hacer clic en el fondo oscuro
+        modal.addEventListener('click', (e) => {
+            if(e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+    }
+
+    /* ========================================================
+       5. LÓGICA DE CAPSETA_CORE (Simulador del Script)
+       ======================================================== */
+    const btnGenerarCurso = document.getElementById('btn-generar-curso');
+    const selectRubro = document.getElementById('capseta-rubro');
+    const selectNivel = document.getElementById('capseta-nivel');
+    const capsetaLog = document.getElementById('capseta-log');
+
+    if(btnGenerarCurso && capsetaLog) {
+        btnGenerarCurso.addEventListener('click', () => {
+            const rubro = selectRubro.value;
+            const nivel = selectNivel.value;
+            
+            // Bloquear botón durante el proceso
+            btnGenerarCurso.disabled = true;
+            btnGenerarCurso.style.opacity = '0.5';
+            btnGenerarCurso.innerHTML = '<i class="ph ph-spinner-gap"></i> Ejecutando Script...';
+
+            capsetaLog.innerHTML = '> processForm(data) iniciado...<br>';
+
+            // Textos simulando el código real de Apps Script
+            const scriptPasos = [
+                `> Validación Server-Side: Rubro [${rubro}], Nivel [${nivel}]... OK`,
+                "> buildTechnicalProposal() invocado.",
+                "> Leyendo Sheet: '02_APRENDIZAJES_DB'...",
+                "> Ejecutando algoritmo de ponderación (Ajuste + Nivel)...",
+                "> Inyectando Matriz de Secuencia en Plantilla Google Docs...",
+                "> Escribiendo bitácora en '01_INPUT_LOG'...",
+                `> [ ÉXITO ] PRO_TECNICA_${rubro.toUpperCase()}_2026.pdf exportado.`
+            ];
+
+            let delay = 600;
+
+            scriptPasos.forEach((paso, index) => {
+                setTimeout(() => {
+                    capsetaLog.innerHTML += paso + '<br>';
+                    capsetaLog.scrollTop = capsetaLog.scrollHeight;
+                }, delay * (index + 1));
+            });
+
+            // Reiniciar estado
+            setTimeout(() => {
+                btnGenerarCurso.disabled = false;
+                btnGenerarCurso.style.opacity = '1';
+                btnGenerarCurso.innerHTML = '<i class="ph ph-file-pdf"></i> Generar Arquitectura';
+                capsetaLog.innerHTML += '<br>> Enlace PDF generado (Simulación). Listo para nueva petición.<br><br>';
+                capsetaLog.scrollTop = capsetaLog.scrollHeight;
+            }, delay * scriptPasos.length + 1000);
+        });
+    }
 });
