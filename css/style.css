@@ -5,14 +5,23 @@
    ========================================= */
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
 
-/* ¡CORRECCIÓN CRÍTICA!: align-items en flex-start para evitar que se corte el contenido arriba en móviles */
+/* El flex-start evita que el contenido se corte arriba en celulares */
 body { background-color: #0d0d12; color: #ffffff; min-height: 100vh; padding: 2rem 1rem; display: flex; justify-content: center; align-items: flex-start; }
 
 /* =========================================
    2. CONTENEDOR BENTO GRID
    ========================================= */
 .bento-container { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: minmax(250px, auto); gap: 1.5rem; width: 100%; max-width: 1300px; }
-.bento-item { background: #1a1a24; border-radius: 24px; padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid rgba(255, 255, 255, 0.05); overflow: hidden; position: relative; }
+
+.bento-item { 
+    background: #1a1a24; border-radius: 24px; padding: 2rem; 
+    display: flex; flex-direction: column; justify-content: space-between; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    border: 1px solid rgba(255, 255, 255, 0.05); overflow: hidden; position: relative;
+    /* ESCUDO ANTI-DESBORDE: Evita que el contenido rompa la grilla */
+    min-width: 0; 
+}
+
 .bento-item:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); }
 .bento-item h3 { margin-bottom: 0.5rem; font-size: 1.3rem; }
 .bento-item p { font-size: 0.9rem; color: #a0a0b0; }
@@ -25,12 +34,9 @@ body { background-color: #0d0d12; color: #ffffff; min-height: 100vh; padding: 2r
 .hero h2 { font-size: 1.2rem; color: #e0e0e0; font-weight: 400; margin-bottom: 1rem; }
 
 #modulo-asistencia { 
-    grid-column: span 2; 
-    grid-row: span 2; 
-    background-color: #1a1a24;
+    grid-column: span 2; grid-row: span 2; background-color: #1a1a24;
     background-image: linear-gradient(to right, rgba(13, 13, 18, 0.98) 40%, rgba(13, 13, 18, 0.1)), url('../img/vrifik-ui.jpg');
-    background-size: cover;
-    background-position: right center;
+    background-size: cover; background-position: right center;
 }
 
 #modulo-nodo0 { grid-column: span 1; grid-row: span 2; }
@@ -107,7 +113,9 @@ h2 i, h3 i { color: #00ff7f; margin-right: 8px; vertical-align: middle; }
 .anomalia-dot { width: 10px; height: 10px; background-color: #ff8800; border-radius: 50%; position: absolute; top: 30%; left: 70%; box-shadow: 0 0 8px #ff8800; cursor: pointer; animation: blink-dot 1s infinite; transition: background-color 0.3s; }
 .anomalia-dot:hover { transform: scale(1.5); }
 @keyframes blink-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
-.terminal-log { background: #000; border: 1px dashed rgba(0, 255, 0, 0.3); padding: 10px; font-family: 'Courier New', Courier, monospace; font-size: 0.75rem; color: #00ff00; height: 90px; overflow-y: auto; border-radius: 4px; line-height: 1.4; }
+
+/* Aplicamos word-wrap para evitar desbordes */
+.terminal-log { background: #000; border: 1px dashed rgba(0, 255, 0, 0.3); padding: 10px; font-family: 'Courier New', Courier, monospace; font-size: 0.75rem; color: #00ff00; height: 90px; overflow-y: auto; border-radius: 4px; line-height: 1.4; word-wrap: break-word; overflow-wrap: break-word; }
 
 /* =========================================
    9. MÓDULO FORMACIÓN
@@ -133,7 +141,9 @@ h2 i, h3 i { color: #00ff7f; margin-right: 8px; vertical-align: middle; }
 .tech-input:focus { border-color: #00ff7f; color: #fff; }
 .capseta-console { background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); border: 1px dashed rgba(0, 255, 127, 0.3); border-radius: 8px; display: flex; flex-direction: column; overflow: hidden; }
 .console-header { background: rgba(0, 255, 127, 0.1); color: #00ff7f; padding: 5px 10px; font-size: 0.7rem; text-transform: uppercase; font-weight: bold; border-bottom: 1px dashed rgba(0, 255, 127, 0.3); }
-.console-body { padding: 10px; font-family: 'Courier New', Courier, monospace; font-size: 0.75rem; color: #00ff7f; flex-grow: 1; overflow-y: auto; line-height: 1.5; }
+
+/* Aplicamos word-wrap para evitar desbordes */
+.console-body { padding: 10px; font-family: 'Courier New', Courier, monospace; font-size: 0.75rem; color: #00ff7f; flex-grow: 1; overflow-y: auto; line-height: 1.5; word-wrap: break-word; overflow-wrap: break-word; }
 
 /* =========================================
    11. VENTANA MODAL (POP-UP)
@@ -162,14 +172,11 @@ h2 i, h3 i { color: #00ff7f; margin-right: 8px; vertical-align: middle; }
 }
 
 @media (max-width: 900px) {
-    /* Forzamos 1 sola columna usando GRID puro (Evita fallos de flexbox) */
-    .bento-container { grid-template-columns: 1fr !important; }
+    /* Forzamos 1 sola columna usando Flexbox para evadir conflictos de Grid */
+    .bento-container { display: flex !important; flex-direction: column !important; gap: 1.5rem; }
     
-    /* Obligamos a cada tarjeta a ocupar todo el ancho disponible */
-    .bento-item { grid-column: 1 / -1 !important; grid-row: auto !important; }
-
     /* Apilamos los layouts internos (App Asistencia y Simulador Capseta) */
-    .asistencia-layout, .capseta-layout { grid-template-columns: 1fr !important; gap: 20px; }
+    .asistencia-layout, .capseta-layout { display: flex !important; flex-direction: column !important; gap: 20px; }
 
     /* Centramos el contenido de tu perfil */
     .hero-profile { flex-direction: column; text-align: center; gap: 15px; }
