@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "img/alfabetizador-braille.png",
     "img/cohete.png",
     "img/espada.png",
-    "img/tutu-2.png"
+    "img/tutu_2.png"
   ];
 
   const galeriaK13 = [
