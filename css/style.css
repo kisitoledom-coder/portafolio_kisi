@@ -81,7 +81,10 @@ h2 i, h3 i { color: #00ff7f; margin-right: 8px; vertical-align: middle; }
 .hero { justify-content: flex-start; } 
 .hero-formacion { margin-top: 20px; padding-top: 15px; border-top: 1px dashed rgba(255, 255, 255, 0.1); display: flex; flex-direction: column; overflow: hidden; }
 .formacion-title { font-size: 0.85rem; color: #00ff7f; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
-.hero-lista { max-height: 135px; }
+.hero-lista { 
+    max-height: 110px; /* Redujimos la altura para dar espacio a los tags de abajo */
+    overflow-y: auto;
+}
 
 /* =========================================
    7. MÓDULO VRIFIK ASISTENCIA
