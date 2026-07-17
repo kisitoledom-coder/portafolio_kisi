@@ -142,10 +142,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const galeriaJuguetes = [
     "img/tutu.png",
+    "img/tutu_2.png",
+    "img/tutu_3.png",
     "img/alfabetizador-braille.png",
     "img/cohete.png",
+    "img/cohete-2",
     "img/espada.png",
-    "img/tutu_2.png"
+    "img/juguete_1.png",
+    "img/simpsons.png",
+    "img/violin.png",
+    "img/helicoptero.png",
+    "img/novios.png"
   ];
 
   const galeriaK13 = [
