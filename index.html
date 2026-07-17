@@ -136,16 +136,32 @@
         </article>
 
         <!-- 3. Observador Cero (Vertical Izquierdo 1x2) -->
-        <article class="bento-item tech-app nodo-terminal" id="modulo-nodo0">
-            <div class="status-indicator alert"><span></span> RASTREANDO VECTOR</div>
-            <h3><i class="ph ph-radar"></i> Observador Cero</h3>
-            <p>Juego de experiencia narrativa. Encuentra anomalías físicas en la infraestructura urbana.</p>
-            <div class="nodo-interface">
-                <div class="radar-container" id="radar-pantalla">
+        <article class="bento-item tech-app nodo-terminal" id="modulo-nodo0" style="justify-content: flex-start; gap: 15px;">
+            <div class="status-indicator alert" style="margin-bottom: 0;"><span></span> RASTREANDO VECTOR</div>
+            <h3 style="margin-bottom: 0;"><i class="ph ph-radar"></i> Observador Cero</h3>
+            <p style="font-size: 0.8rem;">Desarrollo de Juego de Experiencia narrativa GPS. Encuentra anomalías físicas evadiendo la simulación urbana.</p>
+            
+            <div class="nodo-interface" style="flex-grow: 1; display: flex; flex-direction: column; gap: 10px;">
+                <!-- Pantalla del Radar -->
+                <div class="radar-container" id="radar-pantalla" style="height: 140px;">
                     <div class="radar-scanner"></div>
-                    <div class="anomalia-dot" id="btn-anomalia" title="Aislar Anomalía"></div>
+                    <div class="anomalia-dot" id="btn-anomalia" title="Iniciar Triangulación"></div>
                 </div>
-                <div class="terminal-log" id="nodo-log">
+
+                <!-- Métricas al estilo de tu App -->
+                <div style="display: flex; justify-content: space-between; font-family: monospace; font-size: 0.75rem; color: #ff8800;">
+                    <span>DENSIDAD: <span id="nodo-densidad">0.000</span> μ</span>
+                    <span>DISTANCIA: <span id="nodo-distancia">---</span>m</span>
+                </div>
+
+                <!-- Caja de Objetivo -->
+                <div style="border: 1px solid #00ff00; padding: 8px; border-radius: 4px; font-family: monospace; font-size: 0.7rem; color: #00ff00; background: rgba(0, 255, 0, 0.05);">
+                    <strong style="display: block; margin-bottom: 4px;">OBJETIVO FÍSICO:</strong>
+                    <span id="nodo-objetivo">Esperando enlace... Haz clic en la anomalía del radar.</span>
+                </div>
+
+                <!-- Terminal -->
+                <div class="terminal-log" id="nodo-log" style="height: 80px; margin-top: auto;">
                     > TRM-3517 EN LÍNEA.<br>
                     > Esperando interacción física...
                 </div>
@@ -158,8 +174,8 @@
                 <!-- Panel de Control Izquierdo -->
                 <div class="capseta-info">
                     <div class="status-indicator"><span></span> APPS SCRIPT ENGINE</div>
-                    <h3><i class="ph ph-graduation-cap"></i> CAPSETA_CORE v4.4</h3>
-                    <p>Motor de generación de propuestas automáticas de cursos. Inyecta variables en Google Sheets,
+                    <h3><i class="ph ph-graduation-cap"></i> CAPSETA v3.3</h3>
+                    <p>App para la generación automática planificaciones de cursos de capacitación. Inyecta variables en Google Sheets,
                         procesa algoritmos de ponderación y exporta el diseño instruccional en PDF.</p>
 
                     <div class="capseta-form">
@@ -277,7 +293,6 @@
         </div>
     </footer>
 
-    <script src="js/app.js?v=4.0"></script>
 </body>
 
 </html>

@@ -67,55 +67,84 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  /* ========================================================
-         2. LÓGICA DE NODO 0 (Minijuego de Radar Interactivo)
+/* ========================================================
+         2. LÓGICA DE NODO 0 (Simulador de Triangulación GPS)
          ======================================================== */
-  const btnAnomalia = document.getElementById("btn-anomalia");
-  const nodoLog = document.getElementById("nodo-log");
+    const btnAnomalia = document.getElementById('btn-anomalia');
+    const nodoLog = document.getElementById('nodo-log');
+    const nodoDistancia = document.getElementById('nodo-distancia');
+    const nodoDensidad = document.getElementById('nodo-densidad');
+    const nodoObjetivo = document.getElementById('nodo-objetivo');
 
-  if (btnAnomalia && nodoLog) {
-    btnAnomalia.addEventListener("click", () => {
-      btnAnomalia.style.pointerEvents = "none";
-      btnAnomalia.style.backgroundColor = "#00ff00";
-      btnAnomalia.style.boxShadow = "0 0 12px #00ff00";
-      nodoLog.innerHTML = "> AISLANDO ANOMALÍA...<br>";
+    if(btnAnomalia && nodoLog) {
+        btnAnomalia.addEventListener('click', () => {
+            // 1. Bloqueamos el botón y cambiamos el estado visual
+            btnAnomalia.style.pointerEvents = 'none';
+            btnAnomalia.style.backgroundColor = '#00ff00';
+            btnAnomalia.style.boxShadow = '0 0 15px #00ff00';
+            
+            nodoLog.innerHTML = '> ESTABLECIENDO ENLACE...<br>';
+            nodoObjetivo.textContent = "Un fragmento reflectante que captura luz donde debería haber sombra absoluta.";
+            
+            let distancia = 100; // Distancia inicial en metros
+            let densidad = 0.312;
+            nodoDistancia.textContent = distancia;
+            nodoDensidad.textContent = densidad;
 
-      const mensajes = [
-        "> RASTREANDO TU UBICACIÓN: [ ENCONTRANDO LUCEROS ]",
-        "> DENSIDAD: 9.431 μ | DISTANCIA: 305m",
-        "> OBJETIVO FÍSICO:",
-        "> Un fragmento reflectante que captura luz donde debería haber sombra absoluta.",
-        "> [ ENLACE FÍSICO ESTABLECIDO ]",
-      ];
+            // 2. Imprimimos el primer mensaje
+            setTimeout(() => {
+                nodoLog.innerHTML += '> RASTREANDO VECTOR: [ LUCEROS ]<br>';
+                nodoLog.innerHTML += '> Ajustando triangulación...<br>';
+                nodoLog.scrollTop = nodoLog.scrollHeight;
+            }, 800);
 
-      let delay = 700;
-      mensajes.forEach((msg, index) => {
-        setTimeout(
-          () => {
-            nodoLog.innerHTML += msg + "<br>";
-            nodoLog.scrollTop = nodoLog.scrollHeight;
-          },
-          delay * (index + 1),
-        );
-      });
+// 3. Simulamos el movimiento físico reduciendo la distancia cada 100ms
+            setTimeout(() => {
+                const intervaloCaminata = setInterval(() => {
+                    distancia -= 4; // Bajamos de 4 en 4 metros
+                    densidad += 0.055; // Sube la densidad
+                    
+                    if(distancia <= 0) {
+                        distancia = 0;
+                        clearInterval(intervaloCaminata); // Detenemos el reloj
+                        
+                        // Mensaje de éxito al llegar a 0 metros
+                        nodoLog.innerHTML += '<br><span style="color:#00ff00;">> [ ENLACE FÍSICO ESTABLECIDO ]</span><br>';
+                        nodoLog.innerHTML += '> Desplegando archivo visual...<br>';
+                        nodoLog.scrollTop = nodoLog.scrollHeight;
+                        
+                        // ¡LA MAGIA! Abrimos el pop-up con la foto 1 segundo después de llegar
+                        setTimeout(() => {
+                            if (typeof abrirModal === 'function') {
+                                abrirModal(galeriaAnomalias);
+                            }
+                        }, 1000);
+                        
+                        // Reiniciamos el minijuego en el fondo
+                        setTimeout(reiniciarRadar, 5000);
+                    }
+                    
+                    nodoDistancia.textContent = distancia;
+                    nodoDensidad.textContent = densidad.toFixed(3);
+                }, 150); // Velocidad a la que bajan los números
+            }, 2000);
+        });
 
-      setTimeout(
-        () => {
-          nodoLog.innerHTML =
-            "> TRM-3517 EN LÍNEA.<br>> Buscando nuevos vectores...";
-          btnAnomalia.style.pointerEvents = "auto";
-          btnAnomalia.style.backgroundColor = "#ff8800";
-          btnAnomalia.style.boxShadow = "0 0 8px #ff8800";
-
-          const randomTop = Math.floor(Math.random() * 75) + 10;
-          const randomLeft = Math.floor(Math.random() * 75) + 10;
-          btnAnomalia.style.top = `${randomTop}%`;
-          btnAnomalia.style.left = `${randomLeft}%`;
-        },
-        delay * mensajes.length + 3500,
-      );
-    });
-  }
+        function reiniciarRadar() {
+            nodoLog.innerHTML = '> TRM-3517 EN LÍNEA.<br>> Buscando nuevos vectores...';
+            nodoObjetivo.textContent = "Esperando enlace... Haz clic en la anomalía del radar.";
+            nodoDistancia.textContent = "---";
+            nodoDensidad.textContent = "0.000";
+            
+            btnAnomalia.style.pointerEvents = 'auto';
+            btnAnomalia.style.backgroundColor = '#ff8800';
+            btnAnomalia.style.boxShadow = '0 0 8px #ff8800';
+            
+            // Movemos el punto a un lugar aleatorio
+            btnAnomalia.style.top = `${Math.floor(Math.random() * 70) + 10}%`;
+            btnAnomalia.style.left = `${Math.floor(Math.random() * 70) + 10}%`;
+        }
+    }
 
   /* ========================================================
        LÓGICA DE VENTANA MODAL DINÁMICA Y CARRUSEL
@@ -163,6 +192,11 @@ document.addEventListener("DOMContentLoaded", () => {
     "img/k13-love.png",
     "img/k13-punk.png",
   ];
+
+  // NUEVA GALERÍA: Evidencia de Observador Cero
+    const galeriaAnomalias = [
+        'img/anomalia.png' // <-- Asegúrate de guardar una foto con este nombre (o cámbialo al de tu foto)
+    ];
 
   // Actualiza la foto y el contador
   const actualizarImagen = () => {
