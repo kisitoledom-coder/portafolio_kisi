@@ -6,7 +6,11 @@
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
 
 /* El flex-start evita que el contenido se corte arriba en celulares */
-body { background-color: #0d0d12; color: #ffffff; min-height: 100vh; padding: 2rem 1rem; display: flex; justify-content: center; align-items: flex-start; }
+body { background-color: #0d0d12; color: #ffffff; min-height: 100vh; padding: 2rem 1rem; display: flex; justify-content: center; align-items: flex-start; flex-direction: 
+   column; /*  Permite apilar el main y el footer */
+    justify-content: flex-start; /* Cambiamos center por flex-start para evitar saltos raros */
+    align-items: center; 
+}
 
 /* =========================================
    2. CONTENEDOR BENTO GRID
@@ -183,6 +187,37 @@ h2 i, h3 i { color: #00ff7f; margin-right: 8px; vertical-align: middle; }
 .project-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
 .tag { background: rgba(0, 255, 127, 0.1); border: 1px solid rgba(0, 255, 127, 0.3); color: #00ff7f; padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; display: flex; align-items: center; gap: 6px; transition: all 0.3s ease; cursor: default; }
 .tag:hover { background: rgba(0, 255, 127, 0.2); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0, 255, 127, 0.1); }
+
+/* =========================================
+   14. FOOTER
+   ========================================= */
+.site-footer { width: 100%; max-width: 1300px; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px dashed rgba(255, 255, 255, 0.1); display: flex; justify-content: space-between;
+align-items: center; color: #a0a0b0; font-size: 0.85rem;
+}
+
+.site-footer p {
+    display: flex; align-items: center;
+}
+
+.footer-socials {
+    display: flex; gap: 15px; align-items: center;
+}
+
+.footer-socials a {
+    color: #a0a0b0; font-size: 1.2rem; transition: all 0.3s ease; text-decoration: none; display: flex; justify-content: center; align-items: center; background: rgba(255, 255, 255, 0.05);
+width: 35px; height: 35px; border-radius: 50%;
+}
+
+.footer-socials a:hover {
+    color: #00ff7f; background: rgba(0, 255, 127, 0.1); transform: translateY(-3px);
+}
+
+/* Ajuste del Footer para celulares */
+@media (max-width: 600px) {
+    .site-footer {
+        flex-direction: column; gap: 15px; text-align: center; margin-top: 2rem;
+    }
+}
 
 /* =========================================
    13. RESPONSIVE DESIGN (NUEVA VERSIÓN BLINDADA)

@@ -143,16 +143,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const galeriaJuguetes = [
     "img/tutu.png",
     "img/tutu_2.png",
-    "img/tutu_3.png",
     "img/alfabetizador-braille.png",
-    "img/cohete.png",
     "img/cohete-2.png",
     "img/espada.png",
     "img/juguete_1.png",
     "img/simpsons.png",
     "img/violin.png",
     "img/helicoptero.png",
-    "img/novios.png"
+    "img/novios.png",
   ];
 
   const galeriaK13 = [
@@ -289,6 +287,14 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         delay * scriptPasos.length + 1000,
       );
+    });
+  }
+  // Lógica para el botón de "Volver Arriba" en el Footer
+  const btnSubir = document.getElementById("btn-subir");
+  if (btnSubir) {
+    btnSubir.addEventListener("click", (e) => {
+      e.preventDefault(); // Evita que modifique la URL
+      window.scrollTo({ top: 0, behavior: "smooth" }); // Sube suavemente
     });
   }
 });
