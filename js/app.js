@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "img/tutu_3.png",
     "img/alfabetizador-braille.png",
     "img/cohete.png",
-    "img/cohete-2",
+    "img/cohete-2.png",
     "img/espada.png",
     "img/juguete_1.png",
     "img/simpsons.png",
